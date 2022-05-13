@@ -316,346 +316,349 @@
                     </div>
                 </div>
                 <button style="background-color: white; color: black" class="btn btn-primary leftLst">
-                    << /button>
+                    < </button>
                         <button style="background-color: white; color: black"
                             class="btn btn-primary rightLst">></button>
             </div>
         </div>
-    </div>
-    <!--NEW PRODUCT-->
-    <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
-        SẢN PHẨM MỚI
-    </div>
-    <div style=" max-width: 1300px;" class="container find">
-        <div class="row">
-            <div class="col-4 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <span class="ico-sale">-21%</span>
-                    <img class="card-img-top link" src="./product img/aodas1.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">ÁO TANK TOP TẬP THỂ THAO</a>
-                        <br>
-                        <div class="price">
-                            <p class="card-text old-price">1,200,000₫</p>
-                            <p class="card-text new-price"> 1,000,000₫</p>
+        <!--NEW PRODUCT-->
+        <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
+            SẢN PHẨM MỚI
+        </div>
+        <div style=" max-width: 1300px;" class="container find">
+            <div class="row">
+                <div class="col-4 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <span class="ico-sale">-21%</span>
+                        <img class="card-img-top link" src="./product img/aodas1.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">ÁO TANK TOP TẬP THỂ THAO</a>
+                            <div class="price">
+                                <p class="card-text old-price">1,200,000₫</p>
+                                <p class="card-text new-price"> 1,000,000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <span class="ico-sale">-21%</span>
+                        <img class="card-img-top link" src="./product img/giaydas1.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">GIÀY TRAINER DROPSET</a>
+                            <div class="price">
+                                <p class="card-text old-price">3,500,000₫</p>
+                                <p class="card-text new-price"> 3,000,000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <span class="ico-sale">-21%</span>
+                        <img class="card-img-top link" src="./product img/aodas2.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">ÁO KHOÁC GIÓ ADIDAS</a>
+                            <div class="price">
+                                <p class="card-text old-price">1,500,000₫</p>
+                                <p class="card-text new-price"> 1,200,000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <img class="card-img-top link" src="./product img/quan1.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">QUẦN TẬP JOGA XANH RÊU</a>
+                            <div class="price">
+                                <p class="card-text old-price"></p>
+                                <p class="card-text new-price"> 1,800,000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <span class="ico-sale">-21%</span>
+                        <img class="card-img-top link" src="./product img/giaydas2.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">GIÀY ALPHATORSION 2.0</a>
+                            <div class="price">
+                                <p class="card-text old-price">2,850,000₫</p>
+                                <p class="card-text new-price"> 1,425,000₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-2 col-lg-2">
+                    <div style="margin-bottom: 10px !important;" class="card card-custom">
+                        <span class="ico-sale">-21%</span>
+                        <img class="card-img-top link" src="./product img/quan2.webp" alt="Card image cap">
+                        <!-- <hr class="gach-ngang"> -->
+                        <div style="padding: 4px 1px !important;" class="card-body">
+                            <a class="card-title product-title" href="./chitiet.html">QUẦN SHORT 4KRFT XANH RÊU</a>
+                            <div class="price">
+                                <p class="card-text old-price">1,000,000₫</p>
+                                <p class="card-text new-price"> 800,000₫</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <span class="ico-sale">-21%</span>
-                    <img class="card-img-top link" src="./product img/giaydas1.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">GIÀY TRAINER DROPSET</a>
-                        <br>
-                        <p class="card-text old-price">3,500,000₫</p>
-                        <p class="card-text new-price"> 3,000,000₫</p>
+        </div>
+        <!--WHAT FIND?-->
+        <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
+            BẠN ĐANG TÌM?
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card" style="border: none; background-color: #333333;">
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg"
+                                alt="Card image cap"></figure>
+                        <div class="card-body p-1 color-card-body">
+                            <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NAM</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <span class="ico-sale">-21%</span>
-                    <img class="card-img-top link" src="./product img/aodas2.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">ÁO KHOÁC GIÓ</a>
-                        <br>
-                        <p class="card-text old-price">1,500,000₫</p>
-                        <p class="card-text new-price"> 1,200,000₫</p>
+                <div class="col-4">
+                    <div class="card" style="border: none;background-color: #333333;">
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg"
+                                alt="Card image cap"></figure>
+                        <div class="card-body p-1 color-card-body">
+                            <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NỮ</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <img class="card-img-top link" src="./product img/quan1.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">QUẦN TẬP JOGA</a>
-                        <br>
-                        <div class="price">
-                            <p class="card-text old-price"></p>
-                            <p class="card-text new-price"> 1,800,000₫</p>
+                <div class="col-4">
+                    <div class="card" style="border: none;background-color: #333333;">
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg"
+                                alt="Card image cap"></figure>
+                        <div class="card-body p-1 color-card-body">
+                            <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO TRẺ EM
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <span class="ico-sale">-21%</span>
-                    <img class="card-img-top link" src="./product img/giaydas2.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">GIÀY ALPHATORSION 2.0</a>
-                        <br>
-                        <p class="card-text old-price">2,850,000₫</p>
-                        <p class="card-text new-price"> 1,425,000₫</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2">
-                <div style="margin-bottom: 10px !important;" class="card card-custom">
-                    <span class="ico-sale">-21%</span>
-                    <img class="card-img-top link" src="./product img/quan2.webp" alt="Card image cap">
-                    <!-- <hr class="gach-ngang"> -->
-                    <div style="padding: 0 1px !important;" class="card-body">
-                        <a class="card-title product-title" href="./chitiet.html">QUẦN SHORT 4KRFT</a>
-                        <br>
-                        <p class="card-text old-price">1,000,000₫</p>
-                        <p class="card-text new-price"> 800,000₫</p>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-    <!--WHAT FIND?-->
-    <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
-        BẠN ĐANG TÌM?
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <div class="card" style="border: none; background-color: #333333;">
-                    <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg"
-                            alt="Card image cap"></figure>
-                    <div class="card-body p-1 color-card-body">
-                        <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NAM</p>
-                    </div>
-                </div>
+        <!--TYPE OF PRODUCTS-->
+        <div class="container type-of-product">
+            <div class=" box">
+                <img height="150px !important" src="./type_of_product/kid-shoes.jpg">
+                <span>Giày cho trẻ em</span>
             </div>
-            <div class="col-4">
-                <div class="card" style="border: none;background-color: #333333;">
-                    <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg"
-                            alt="Card image cap"></figure>
-                    <div class="card-body p-1 color-card-body">
-                        <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NỮ</p>
-                    </div>
-                </div>
+            <div class=" box">
+                <img height="150px !important" src="./type_of_product/uniform.jpg">
+                <span>Quần áo thể thao</span>
             </div>
-            <div class="col-4">
-                <div class="card" style="border: none;background-color: #333333;">
-                    <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg"
-                            alt="Card image cap"></figure>
-                    <div class="card-body p-1 color-card-body">
-                        <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO TRẺ EM
-                        </p>
-                    </div>
-                </div>
+            <div class=" box">
+                <img height="150px !important" src="./type_of_product/ball.jpg">
+                <span>Phụ kiện thể thao</span>
             </div>
-        </div>
-    </div>
-    <!--TYPE OF PRODUCTS-->
-    <div class="container type-of-product">
-        <div class=" box">
-            <img height="150px !important" src="./type_of_product/kid-shoes.jpg">
-            <span>Giày cho trẻ em</span>
-        </div>
-        <div class=" box">
-            <img height="150px !important" src="./type_of_product/uniform.jpg">
-            <span>Quần áo thể thao</span>
-        </div>
-        <div class=" box">
-            <img height="150px !important" src="./type_of_product/ball.jpg">
-            <span>Phụ kiện thể thao</span>
-        </div>
 
-    </div>
-    <!--GENERATION-->
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="gene_item">
-                    <div class="gene_img">
-                        <img src="./product img/gene3.png" alt="">
-                    </div>
-                    <div class="gene_info">
-                        <h2 class="gene_title">A NEW GENERATION</h2>
-                        <p class="gene_desc">Náo nhiệt và táo bạo nhưng luôn cởi mở -- đôi giày sáng tạo cho chính bạn
-                        </p>
-                        <button class="gene_button btn btn-secondary">MUA NGAY</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                <div class="gene_item">
-                    <div class="gene_img">
-                        <img src="./product img/gene2.webp" alt="">
-                    </div>
-                    <div class="gene_info">
-                        <h2 class="gene_title">WE'RE GOT YOU COVERED</h2>
-                        <p class="gene_desc">Discover the adidas Face Cover with an improved confort, designed for
-                            exercise</p>
-                        <button class="gene_button btn btn-secondary">SHOP NOW</button>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-    <!--BEST OF ADIDAS-->
-    <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
-        BEST OF ADIDAS
-    </div>
-    <div style="margin-bottom: 2px !important;" class="container">
-        <div class="row">
-            <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 best">
-                <div class="best_item">
-                    <img height="150px !important" src="./product img/best1.webp">
-                    <a class="best_title product-title" href="./chitiet.html">Response Super 2.0 Shoes</a>
-                    <p class="price_bestitem">2,300,000đ</p>
-                </div>
-            </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-                <div class="best_item">
-                    <img height="150px !important" src="./product img/best2.webp">
-                    <a class="best_title product-title" href="./chitiet.html">Ultraboost 22 Shoes</a>
-                    <p class="price_bestitem">5,200,000đ</p>
-                </div>
-            </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-                <div class="best_item">
-                    <img height="150px !important" src="./product img/best3.webp">
-                    <a class="best_title product-title" href="./chitiet.html">Galaxy 5 Shoes</a>
-                    <p class="price_bestitem">1,500,000đ</p>
-                </div>
-            </div>
-            <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-                <div class="best_item">
-                    <img height="150px !important" src="./product img/best4.webp">
-                    <a class="best_title product-title" href="./chitiet.html">Fluidflow 2.0 Shoes</a>
-                    <p class="price_bestitem">2,100,000đ</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div style=" max-width: 1300px;" class="container find">
-        <!--END-Position-->
-        <!-- Footer -->
-        <footer style="background-color: #333333 !important ;" class=" text-center text-lg-start bg-light text-muted">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-                <!-- Left -->
-                <div class="me-5 d-none d-lg-block">
-                    <span>Get connected with us on social networks:</span>
-                </div>
-                <!-- Left -->
-
-                <!-- Right -->
-                <div>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="me-4 text-reset">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-
-                </div>
-                <!-- Right -->
-            </section>
-            <!-- Section: Social media -->
-
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-
-                                <i class="fas fa-gem me-3"></i>Phương Nam Sport
-                            </h6>
-                            <p>
-                                Rất hân hạnh được đem đến cho quý khách những sản phẩm tốt nhất
-                            </p>
+        <!--GENERATION-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="gene_item">
+                        <div class="gene_img">
+                            <img src="./product img/gene3.png" alt="">
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Products
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Giày bóng đá</a>
+                        <div class="gene_info">
+                            <h2 class="gene_title">A NEW GENERATION</h2>
+                            <p class="gene_desc">Náo nhiệt và táo bạo nhưng luôn cởi mở -- đôi giày sáng tạo cho chính
+                                bạn
                             </p>
-                            <p>
-                                <a href="#!" class="text-reset">Quần áo bóng đá</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Phụ kiện bóng đá</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Bóng đá</a>
-                            </p>
+                            <button class="gene_button btn btn-secondary">MUA NGAY</button>
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Useful links
-                            </h6>
-                            <p>
-                                <a href="#!" class="text-reset">Pricing</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Settings</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Orders</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-reset">Help</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold mb-4">
-                                Contact
-                            </h6>
-                            <p><i class="fas fa-home me-3"></i> tòa HH2B Linh Đàm,quận Hoàng Mai, Hà Nội</p>
-                            <p>
-                                <i class="fas fa-envelope me-3"></i>
-                                nguyennam210601@gmail.com
-                            <p><i class="fas fa-phone me-3"></i>0358307767</p>
-                            </p>
-
-                        </div>
-                        <!-- Grid column -->
                     </div>
-                    <!-- Grid row -->
                 </div>
-            </section>
-            <!-- Section: Links  -->
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="gene_item">
+                        <div class="gene_img">
+                            <img src="./product img/gene2.webp" alt="">
+                        </div>
+                        <div class="gene_info">
+                            <h2 class="gene_title">WE'RE GOT YOU COVERED</h2>
+                            <p class="gene_desc">Discover the adidas Face Cover with an improved confort, designed for
+                                exercise</p>
+                            <button class="gene_button btn btn-secondary">SHOP NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--BEST OF ADIDAS-->
+        <div style="margin: 20px auto; text-align: center; font-size:30px; font-weight:700; color: #555555;">
+            BEST OF ADIDAS
+        </div>
+        <div style="margin-bottom: 2px !important;" class="container">
+            <div class="row">
+                <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 best">
+                    <div class="best_item">
+                        <img height="150px !important" src="./product img/best1.webp">
+                        <a class="best_title product-title" href="./chitiet.html">Response Super 2.0 Shoes</a>
+                        <p class="price_bestitem">2,300,000đ</p>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                    <div class="best_item">
+                        <img height="150px !important" src="./product img/best2.webp">
+                        <a class="best_title product-title" href="./chitiet.html">Ultraboost 22 Shoes</a>
+                        <p class="price_bestitem">5,200,000đ</p>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                    <div class="best_item">
+                        <img height="150px !important" src="./product img/best3.webp">
+                        <a class="best_title product-title" href="./chitiet.html">Galaxy 5 Shoes</a>
+                        <p class="price_bestitem">1,500,000đ</p>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                    <div class="best_item">
+                        <img height="150px !important" src="./product img/best4.webp">
+                        <a class="best_title product-title" href="./chitiet.html">Fluidflow 2.0 Shoes</a>
+                        <p class="price_bestitem">2,100,000đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style=" max-width: 1300px;" class="container find">
+            <!--END-Position-->
+            <!-- Footer -->
+            <footer style="background-color: #333333 !important ;"
+                class=" text-center text-lg-start bg-light text-muted">
+                <!-- Section: Social media -->
+                <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                    <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <span>Get connected with us on social networks:</span>
+                    </div>
+                    <!-- Left -->
 
-            <!-- Copyright -->
-            <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
-    </div>
-    </body>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <script src="./script.js"></script>
-    <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
+                    <!-- Right -->
+                    <div>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="" class="me-4 text-reset">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                    <!-- Right -->
+                </section>
+                <!-- Section: Social media -->
+
+                <!-- Section: Links  -->
+                <section class="">
+                    <div class="container text-center text-md-start mt-5">
+                        <!-- Grid row -->
+                        <div class="row mt-3">
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                                <!-- Content -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+
+                                    <i class="fas fa-gem me-3"></i>Phương Nam Sport
+                                </h6>
+                                <p>
+                                    Rất hân hạnh được đem đến cho quý khách những sản phẩm tốt nhất
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    Products
+                                </h6>
+                                <p>
+                                    <a href="#!" class="text-reset">Giày bóng đá</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Quần áo bóng đá</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Phụ kiện bóng đá</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Bóng đá</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    Useful links
+                                </h6>
+                                <p>
+                                    <a href="#!" class="text-reset">Pricing</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Settings</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Orders</a>
+                                </p>
+                                <p>
+                                    <a href="#!" class="text-reset">Help</a>
+                                </p>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    Contact
+                                </h6>
+                                <p><i class="fas fa-home me-3"></i> tòa HH2B Linh Đàm,quận Hoàng Mai, Hà Nội</p>
+                                <p>
+                                    <i class="fas fa-envelope me-3"></i>
+                                    nguyennam210601@gmail.com
+                                <p><i class="fas fa-phone me-3"></i>0358307767</p>
+                                </p>
+
+                            </div>
+                            <!-- Grid column -->
+                        </div>
+                        <!-- Grid row -->
+                    </div>
+                </section>
+                <!-- Section: Links  -->
+
+                <!-- Copyright -->
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </div>
+        </body>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+        <script src="./script.js"></script>
+        <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
 
 </html>
