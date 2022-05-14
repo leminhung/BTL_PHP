@@ -111,8 +111,7 @@ session_start();
                         class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
                     <a href="#" class="list-group-item list-group-item-action name-category-item">QUẦN THỂ THAO</a>
                     <a href="#" class="list-group-item list-group-item-action name-category-item">ÁO THỂ THAO</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">QUẦN ÁO TẬP GYM</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">GIÀY BÓNG ĐÁ</a>
+                    <a href="#" class="list-group-item list-group-item-action name-category-item">GIÀY THỂ THAO</a>
                     <a href="#" class="list-group-item list-group-item-action name-category-item">PHỤ KIỆN</a>
                 </div>
             </div>
