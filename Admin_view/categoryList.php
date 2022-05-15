@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/view/common/variable.jsp"></jsp:include>;
+    <?php require_once "../connect.php" ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -52,7 +52,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
+                <a class="nav-link px-3" href="">Sign out</a>
             </div>
         </div>
     </header>
@@ -183,16 +183,12 @@
                                 <input type="hidden" id="page" name="page" class="form-control">
                                 <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search"
                                     value="" style="margin-right: 5px;">
-                                <select class="form-control" name="contactId" id="contactId" style="margin-right: 5px;">
-                                    <c:forEach items="" var="categoriesModel">
-                                        <option value=""></option>
-                                    </c:forEach>
-                                </select>
                                 <button type="submit" id="btnSearch" name="btnSearch" value="Search"
                                     class="btn btn-primary">Seach</button>
                             </div>
                             <div>
-                                <a class="btn btn-outline-primary mb-1" href="" role="button">Add New</a>
+                                <a class="btn btn-outline-primary mb-1" href="./addcategory.php" role="button">Add
+                                    New</a>
                             </div>
                         </div>
                         <table class="table table-striped">
@@ -203,17 +199,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="" var="categoriesModel" varStatus="loop">
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a class="btn btn-primary" href="" role="button">Edit</a>
-                                            <a class="btn btn-danger" href="" role="button">Delete</a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                <?php
+                                    $sql = "SELECT * FROM `categories`";
+                                    $categories = mysqli_query($connect,$sql);
+                                    mysqli_close($connect);
+                                ?>
+                                <?php foreach($categories as $category){ ?>
+                                <tr>
+                                    <th scope="row"><?php echo $category['category_id'] ?></th>
+                                    <td><?php echo $category['category_name'] ?></td>
+                                    <td>
+                                        <a class="btn btn-primary"
+                                            href="./category/update_category.php?id=<?php echo $category['category_id'] ?>"
+                                            role="button">Edit</a>
+                                        <a class="btn btn-danger"
+                                            href="./category/process_deletecategory.php?id=<?php echo $category['category_id'] ?>"
+                                            role="button">Delete</a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                         <!-- Paging -->
@@ -228,7 +232,6 @@
         </div>
 
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="${base}/js/jquery.simplePagination.js"></script>
@@ -262,13 +265,6 @@
     // });
     </script>
     <%--  <script type="text/javascript" src="${base}/js/jquery.js"></script> --%>
-
-
-
-
-
-
-
 </body>
 
 </html>
