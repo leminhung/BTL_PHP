@@ -1,30 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>Dashboard Template · Bootstrap v5.1</title>
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update category</title>
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css" />
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/" />
 
-    <link rel="stylesheet" href="./dashboard.css">
-
-    <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- -->
     <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
     .bd-placeholder-img {
         font-size: 1.125rem;
@@ -39,23 +30,13 @@
             font-size: 3.5rem;
         }
     }
-
-
-
-    .col-md-4 {
-
-        width: 93.333333% !important;
-    }
     </style>
-
-
     <!-- Custom styles for this template -->
-    <link href="./dashboard.css" rel="stylesheet">
+    <link href="../dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
-    <!-- HEADER -->
+    <?php require_once "../../connect.php" ?>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -63,18 +44,15 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
+                <a class="nav-link px-3" href="">Sign out</a>
             </div>
         </div>
     </header>
-
-
     <div class="container-fluid">
         <div class="row">
-            <!-- NAVIGATION -->
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
@@ -190,81 +168,42 @@
                     </ul>
                 </div>
             </nav>
+            <?php
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM categories WHERE category_id=$id";
+                $ketqua = mysqli_query($connect,$sql);
+                $category = mysqli_fetch_array($ketqua);
+            ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-                <form modelAttribute="products" method="post" action="" class="form-horizontal"
-                    enctype="multipart/form-data">
+                <form modelAttribute="category" method="post" action="./process_updatecategory.php"
+                    class="form-horizontal">
                     <fieldset>
-                        <hidden path="id" />
+                        <sf:hidden path="id" />
                         <!-- Form Name -->
-                        <legend>PRODUCTS</legend>
-                        <div style="width: 100%" class="form-group ">
-                            <label class="col-md-4 control-label" for="category">CATEGORY (required)</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <select path="categories.id" class="form-control" id="category">
-                                    <options items="" itemValue="id" itemLabel="name" />
-                                </select>
-                            </div>
-                        </div>
+                        <legend>CATEGORY</legend>
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="title">PRODUCT NAME</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input path="title" id="title" name="title" placeholder="Product name"
-                                    class="form-control input-md" type="text" />
-                            </div>
+                            <input type="hidden" name="category_id" value="<?php echo $id ?>">
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="detailDescription">PRODUCT DESCRIPTION</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4 text-des">
-                                <textarea path="detailDescription" class="form-control" id="summernote"
-                                    name="detailDescription"></textarea>
+                            <label class="col-md-4 control-label" for="name">CATEGORY NAME</label>
+                            <div style="width: 93.333333% !important" class="col-md-4">
+                                <input path="name" id="name" name="category_name" placeholder="CATEGORY NAME"
+                                    value="<?php echo $category['category_name']?>" class="form-control input-md"
+                                    type="text" />
                             </div>
                         </div>
                         <script>
                         $(document).ready(function() {
-                            $('#summernote').summernote();
+                            $("#summernote").summernote();
                         });
                         </script>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="Price">PRICE</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input path="price" id="Price" name="price" placeholder="Price"
-                                    class="form-control input-md" type="text" />
-                            </div>
-                        </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="priceSale">PRICE SALE</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input path="priceSale" id="priceSale" name="priceSale" placeholder="Price Sale"
-                                    class="form-control input-md" type="text" />
-
-                            </div>
-                        </div>
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="brand">QUANTITY</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input path="brand" id="brand" name="brand" placeholder="Quantity"
-                                    class="form-control input-md" type="text" />
-                            </div>
-                        </div>
-                        <!-- phần thêm avatar   -->
-                        <!-- File Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="avatar">Ảnh sản phẩm</label>
-                            <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input id="avatarfile" name="avatarfile" class="input-file" type="file" />
-                            </div>
-                        </div>
                         <!-- Button -->
                         <br>
                         <div class="form-group">
                             <div class="col-md-4">
-                                <button id="singlebutton" name="them" class="btn btn-primary">
-                                    Thêm sản phẩm
+                                <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">
+                                    Sua
                                 </button>
                             </div>
                         </div>
@@ -274,7 +213,6 @@
         </div>
     </div>
 
-
     <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -283,10 +221,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="dashboard.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="./dashboard.js"></script>
+    <script src="./dashboard.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 </body>
 

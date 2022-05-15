@@ -34,13 +34,12 @@
         }
     }
     </style>
-
     <!-- Custom styles for this template -->
     <link href="./dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
-    <!-- HEADER -->
+    <?php require_once "../connect.php" ?>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -51,7 +50,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
+                <a class="nav-link px-3" href="">Sign out</a>
             </div>
         </div>
     </header>
@@ -173,7 +172,7 @@
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <form modelAttribute="category" method="post" action="${base}/admin/addcategory"
+                <form modelAttribute="category" method="post" action="./category/process_addcategory.php"
                     class="form-horizontal">
                     <fieldset>
                         <sf:hidden path="id" />
@@ -183,7 +182,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="name">CATEGORY NAME</label>
                             <div style="width: 93.333333% !important" class="col-md-4">
-                                <input path="name" id="name" name="name" placeholder="CATEGORY NAME"
+                                <input path="name" id="name" name="category_name" placeholder="CATEGORY NAME"
                                     class="form-control input-md" type="text" />
                             </div>
                         </div>
@@ -196,7 +195,7 @@
                         <br>
                         <div class="form-group">
                             <div class="col-md-4">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">
+                                <button id="singlebutton" class="btn btn-primary" type="submit">
                                     Thêm loại sản phẩm
                                 </button>
                             </div>

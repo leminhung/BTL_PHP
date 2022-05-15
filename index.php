@@ -21,6 +21,7 @@ session_start();
 </head>
 
 <body>
+    <?php require_once "connect.php" ?>
     <div class="container-fluid">
         <div class="row header">
             <div class="row head  ">
@@ -102,17 +103,21 @@ session_start();
 
 
     </div>
-
     <div style=" max-width: 1350px; margin-top: 154px;" class="container">
         <div class="row col-12" style="padding-left: 0px;">
             <div class="col-3 justify-content-start" style="padding-left: 0px;">
                 <div style="background-color: #333333 !important;" class="list-group list-group list-group-flush">
                     <a style="background-color: #333333 !important; color: orange !important" href="#"
                         class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">QUẦN THỂ THAO</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">ÁO THỂ THAO</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">GIÀY THỂ THAO</a>
-                    <a href="#" class="list-group-item list-group-item-action name-category-item">PHỤ KIỆN</a>
+                    <?php
+                        $sql = "SELECT * FROM `categories`";
+                        $categories = mysqli_query($connect,$sql);
+                        mysqli_close($connect);
+                    ?>
+                    <?php foreach($categories as $category){ ?>
+                    <a href="#"
+                        class="list-group-item list-group-item-action name-category-item"><?php echo $category['category_name'] ?></a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-9 content">
@@ -431,20 +436,17 @@ session_start();
     </footer>
     <!-- Footer -->
 
-    </div>
-
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="./script.js"></script>
+    <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-</script>
-<script src="./script.js"></script>
-<script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
 
 </html>
