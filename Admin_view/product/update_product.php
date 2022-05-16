@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -12,10 +13,15 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
 
     <link rel="stylesheet" href="./dashboard.css">
-    <!-- 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
-    <!-- <--     <link href="${base}/css/simplePagination.css" rel="stylesheet" / --%> -->
-    <link type="text/css" rel="stylesheet" href="${base}/css/simplePagination.css" />
+    <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ -->
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,17 +39,26 @@
             font-size: 3.5rem;
         }
     }
+
+
+
+    .col-md-4 {
+
+        width: 93.333333% !important;
+    }
     </style>
 
 
     <!-- Custom styles for this template -->
-    <link href="./dashboard.css" rel="stylesheet">
+    <link href="../dashboard.css" rel="stylesheet">
 </head>
 
 <body>
+   
     <?php 
-        require_once "../database/config.php" ;
+        require_once "../product/update_product.php" ;
     ?>
+    
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -59,7 +74,9 @@
             </div>
         </div>
     </header>
-
+    <?php 
+        require_once "../../database/config.php" ;
+    ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -181,110 +198,159 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-                <div class="container-fluid">
+            <?php
+            // if (isset($_POST['add']))
+            // {
+            //     $prd_categoryID = $_POST['prd_category'];
+            //     $prd_name = $_POST['prd_name'];
+            //     $prd_description = $_POST['prd_description'];
+            //     $prd_price = $_POST['prd_price'];
+            //     $prd_quantity = $_POST['prd_quantity'];
+            //     $prd_avatar = $_FILES['prd_avatar']['name'];
+            //     $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
+            //     $path = './upload/';
+            //     $prd_sizeID = $_POST['prd_size'];
+            //     $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
+            //     move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
+            // }
+                
+            // ?>
 
-                    <form class="form-inline" action="" method="get" modelAttribute="products">
-                        <div class="d-flex flex-row justify-content-between mt-4">
-                            <div class="d-flex flex-row">
-                                <input type="hidden" id="page" name="page" class="form-control">
-                                <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search"
-                                    value="" style="margin-right: 5px;">
-                                <select class="form-control" name="categoryId" id="categoryId"
-                                    style="margin-right: 5px;">
-                                    <option>Tất cả</option>
-                                    <c:forEach items="" var="category">
-                                        <option value=""></option>
-                                    </c:forEach>
-                                </select>
-                                <button type="submit" id="btnSearch" name="btnSearch" value="Search"
-                                    class="btn btn-primary">Seach</button>
-                            </div>
-                            <div>
-                                <a class="btn btn-outline-primary mb-1" href="" role="button">Add New</a>
-                            </div>
+            <?php
+                
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM products WHERE product_id=$id";
+                $ketqua = mysqli_query($mysqli,$sql);
+                $product = mysqli_fetch_array($ketqua);
+            ?>
+            
+                <form modelAttribute="products" method="post" action="./process_update_product.php" class="form-horizontal" enctype="multipart/form-data">
+                    <fieldset>
+                        <hidden path="id" />
+                        <!-- Form Name -->
+                        <legend>PRODUCTS</legend>
+                        <div class="form-group">
+                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
                         </div>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Avatar</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div style="width: 100%" class="form-group ">
+                            <label class="col-md-4 control-label" for="category">CATEGORY (required)</label>
                             <?php
-                                $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                                $sql_danhmuc = mysqli_query($mysqli,"SELECT * FROM `categories`");
                             ?>
                             
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <select name="prd_category" class="form-control" id="category">
                                 <?php
-                                $i=1;
-                                    while($row_product=mysqli_fetch_array($sql_product)){
+                                    while($row_danhmuc=mysqli_fetch_array($sql_danhmuc)){
                                     ?>
-                                    <tr>
-                                        
-                                        <td><?php echo $i++; ?></td>
-                                        
-                                        <td><?php echo $row_product['product_name']?> </td>
-                                        <td><?php echo $row_product['product_price']?> </td>
-                                        <td><?php echo $row_product['category_id']?> </td>
-                                        <td><?php echo $row_product['product_description']?> </td>
-
-                                       
-                                        <td>
-                                            <img width="100" src="/">
-                                            
-                                        </td>
-                                        <td>
-                                                                      
-                                            <a class="btn btn-primary" href="./product/update_product.php?id=<?php echo $row_product['product_id']?>" role="button">Edit</a>
-                                            <a class="btn btn-danger" href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>" role="button">Delete</a>
-                                        </td>
-                                    </tr>
-                                   
+                                    <option value="<?php echo $row_danhmuc['category_id'] ?>"><?php echo $row_danhmuc['category_name']?></option>
                                     <?php
                                     }
                                 ?>
-                                <!-- <c:forEach items="" var="product" varStatus="loop">
-                                    
-                                </c:forEach> -->
-                            </tbody>
-                        </table>
-                        <!-- Paging -->
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-center">
-                                <div id="paging"></div>
+                                </select>
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="title">PRODUCT NAME</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input value="<?php echo $product['product_name']?>"  id="title" name="prd_name" placeholder="Product name"
+                                    class="form-control input-md" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="detailDescription">PRODUCT DESCRIPTION</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4 text-des">
+                                <textarea value="<?php echo $product['product_description']?>" class="form-control" id="summernote"
+                                    name="prd_description"></textarea>
+                            </div>
+                        </div>
+                        <script>
+                        $(document).ready(function() {
+                            $('#summernote').summernote();
+                        });
+                        </script>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Price">PRICE</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input value="<?php echo $product['product_price']?>"  id="Price" name="prd_price" placeholder="Price"
+                                    class="form-control input-md" type="text" />
+                            </div>
+                        </div>
+                        <!-- Text input phan nay` chua bàn đến-->
+                        <!-- <div class="form-group">
+                            <label class="col-md-4 control-label" for="priceSale">PRICE SALE</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input path="prd_priceSale" id="priceSale" name="priceSale" placeholder="Price Sale"
+                                    class="form-control input-md" type="text" />
+
+                            </div>
+                        </div> -->
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="brand">QUANTITY</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input value="<?php echo $product['product_quantity']?>" name="prd_quantity" placeholder="Quantity"
+                                    class="form-control input-md" type="number" />
+                            </div>
+                        </div>
+                        <!-- phần thêm avatar   -->
+                        <!-- File Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="avatar">Ảnh sản phẩm</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input id="avatarfile" name="prd_avatar" class="input-file" type="file" />
+                            </div>
+                        </div>
+                        <!-- Size sản phẩm -->
+                        <div style="width: 100%" class="form-group ">
+                            <label class="col-md-4 control-label" for="category">Size</label>
+                            <?php
+                                $sql_size = mysqli_query($mysqli,"SELECT * FROM `sizes`");
+                            ?>
+                            
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <select name="prd_size" class="form-control" >
+                                <?php
+                                    while($row_size=mysqli_fetch_array($sql_size)){
+                                    ?>
+                                    <option value="<?php echo $row_size['size_id'] ?>"><?php echo $row_size['size_name']?></option>
+                                    <?php
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="add" class="btn btn-primary">
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
             </main>
         </div>
-
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src=""></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="./dashboard.js"></script>
     <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="${base}/jsdashboard.js"></script>
-
-
-    <script type="text/javascript">
-    </script>
-    <script type="text/javascript" src="${base}/js/jquery.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 </body>
 
 </html>
