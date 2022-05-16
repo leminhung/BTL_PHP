@@ -1,5 +1,6 @@
 <?php
 require_once './database/config.php';
+
 session_start();
 ?>
 
@@ -23,23 +24,13 @@ session_start();
             <div class="row head  ">
                 <div class="col-12 nav-item dropdown nav-custom">
                     <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-user"></i> <?php
-                                                    if (isset($_SESSION['username'])) {
-                                                        echo $_SESSION['username'];
-                                                    } else {
-                                                        echo 'Tài khoản';
-                                                    }
-                                                    ?>
+                        <i class="far fa-user"></i> Tài khoản
                     </a>
                     <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item dropdown-item-custom" href="./signup">Đăng ký</a>
                         <div class="dropdown-divider margin: 3px 0;"></div>
-                        <?php
-                        if (!isset($_SESSION['username'])) {
-                            echo '<a class="dropdown-item dropdown-item-custom" href="./signin">Đăng nhập</a>';
-                            echo '<div class="dropdown-divider margin: 3px 0;"></div>';
-                        }
-                        ?>
+                        <a class="dropdown-item dropdown-item-custom" href="./signin">Đăng nhập</a>
+                        <div class="dropdown-divider margin: 3px 0;"></div>
                         <a class="dropdown-item dropdown-item-custom" href="#">Giỏ hàng</a>
                         <div class="dropdown-divider margin: 3px 0;"></div>
                         <a class="dropdown-item dropdown-item-custom" href="#">Thanh toán </a>
@@ -50,6 +41,7 @@ session_start();
                     </div>
                 </div>
             </div>
+
             <div class="row col-12 logo-search-cart">
                 <div style="justify-content: end !important;" class="col-3 logo">
                     <img width="20%" src="./image/Free_Sample_By_Wix__1_-removebg-preview.png" alt="">
@@ -103,19 +95,19 @@ session_start();
             </div>
         </div>
 
+
+
     </div>
+
     <div style=" max-width: 1350px; margin-top: 154px;" class="container">
         <div class="row col-12" style="padding-left: 0px;">
             <div class="col-3 justify-content-start" style="padding-left: 0px;">
                 <div style="background-color: #333333 !important;" class="list-group list-group list-group-flush">
                     <a style="background-color: #333333 !important; color: orange !important" href="#" class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
-                    <?php
-                    $sql = "SELECT * FROM `categories`";
-                    $categories = $mysqli->query($sql);
-                    ?>
-                    <?php foreach ($categories as $category) { ?>
-                        <a href="#" class="list-group-item list-group-item-action name-category-item"><?php echo $category['category_name'] ?></a>
-                    <?php } ?>
+                    <a href="#" class="list-group-item list-group-item-action name-category-item">QUẦN THỂ THAO</a>
+                    <a href="#" class="list-group-item list-group-item-action name-category-item">ÁO THỂ THAO</a>
+                    <a href="#" class="list-group-item list-group-item-action name-category-item">GIÀY THỂ THAO</a>
+                    <a href="#" class="list-group-item list-group-item-action name-category-item">PHỤ KIỆN</a>
                 </div>
             </div>
             <div class="col-9 content">
@@ -424,14 +416,17 @@ session_start();
     </footer>
     <!-- Footer -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    <script src="./script.js"></script>
-    <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
+    </div>
+
+
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script src="./script.js"></script>
+<script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
 
 </html>

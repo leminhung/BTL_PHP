@@ -1,7 +1,6 @@
 <?php
-    require_once "../../connect.php";
+    require_once "../../database/config.php";
     $id = $_GET['id'];
     $sqlxoa = "DELETE FROM `categories` WHERE category_id = '$id'";
-    mysqli_query($connect,$sqlxoa);
+    $mysqli->query($sqlxoa);
     header("location:../categoryList.php");
-?>
