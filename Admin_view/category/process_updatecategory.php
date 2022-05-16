@@ -7,5 +7,5 @@ $sql = "UPDATE categories
     category_name='$categoryname'
     WHERE
     category_id = $id ";
-$mysqli->query($connect, $sql);
+$mysqli->query($sql);
 header('location:../categoryList.php');
