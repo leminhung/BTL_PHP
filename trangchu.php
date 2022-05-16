@@ -1,3 +1,7 @@
+<?php
+require_once './database/config.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,38 +9,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
     <title>Phương Nam Sport</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <?php require_once "connect.php" ?>
     <div class="container-fluid">
         <div class="row header">
             <div class="row head  ">
                 <div class="col-12 nav-item dropdown nav-custom">
-                    <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-user"></i> Tài khoản
+                    <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user"></i> <?php
+                                                    if (isset($_SESSION['username'])) {
+                                                        echo $_SESSION['username'];
+                                                    } else {
+                                                        echo 'Tài khoản';
+                                                    }
+                                                    ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item dropdown-item-custom" href="./signup">Đăng ký</a>
                         <div class="dropdown-divider margin: 3px 0;"></div>
-                        <a class="dropdown-item dropdown-item-custom" href="./signin">Đăng nhập</a>
-                        <div class="dropdown-divider margin: 3px 0;"></div>
+                        <?php
+                        if (!isset($_SESSION['username'])) {
+                            echo '<a class="dropdown-item dropdown-item-custom" href="./signin">Đăng nhập</a>';
+                            echo '<div class="dropdown-divider margin: 3px 0;"></div>';
+                        }
+                        ?>
                         <a class="dropdown-item dropdown-item-custom" href="#">Giỏ hàng</a>
                         <div class="dropdown-divider margin: 3px 0;"></div>
                         <a class="dropdown-item dropdown-item-custom" href="#">Thanh toán </a>
                         <div class="dropdown-divider margin: 3px 0;"></div>
                         <a class="dropdown-item dropdown-item-custom" href="#">Tra cứu đơn hàng </a>
+                        <div class="dropdown-divider margin: 3px 0;"></div>
+                        <a class="dropdown-item dropdown-item-custom" href="./signout">Đăng xuất </a>
                     </div>
                 </div>
             </div>
@@ -46,11 +56,9 @@
                 </div>
                 <div class="col-6">
                     <div class="input-group mb-3 mt-3">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username"
-                            aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button"><i
-                                    class="fas fa-search"></i></button>
+                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -133,8 +141,7 @@
                 <div class="MultiCarousel-inner">
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important; background-color:#333333!important;"
-                                class="card ">
+                            <div style="margin-bottom: 10px !important; background-color:#333333!important;" class="card ">
                                 <span class="ico-sale">-22%</span>
                                 <img class="card-img-top link" src="./product img/nike ball.jpeg" alt="Card image cap">
 
@@ -151,11 +158,9 @@
 
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-22%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">ADIDAS X
@@ -170,11 +175,9 @@
 
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-24%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">ADIDAS COPA SENSE
@@ -189,11 +192,9 @@
 
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-1%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 TF.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 TF.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">ADIDAS COPA SENSE
@@ -208,11 +209,9 @@
 
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-21%</span>
-                                <img class="card-img-top link" src="./product img/nike_tiembi_shoe.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/nike_tiembi_shoe.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">NIKE TIEMPO REACT
@@ -227,11 +226,9 @@
 
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-1%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW .png"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW .png" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">ADIDAS X
@@ -245,12 +242,9 @@
                     </div>
                     <div class="item">
                         <div style="padding: 0 0; " class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-16%</span>
-                                <img class="card-img-top link"
-                                    src="./product img/boc ong dong ADIDAS X LESTO SHIN GUARDS - BLACK.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/boc ong dong ADIDAS X LESTO SHIN GUARDS - BLACK.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">BỌC ỐNG ĐỒNG
@@ -264,8 +258,7 @@
                     </div>
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-29%</span>
                                 <img class="card-img-top link" src="./product img/boc ong.jpeg" alt="Card image cap">
 
@@ -281,11 +274,9 @@
                     </div>
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-0%</span>
-                                <img class="card-img-top link" src="./product img/quanaokamitovang.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/quanaokamitovang.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">BỘ QUẦN ÁO BÓNG
@@ -299,11 +290,9 @@
                     </div>
                     <div class="item">
                         <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
+                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-0%</span>
-                                <img class="card-img-top link" src="./product img/quanaokamitodo.jpg"
-                                    alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/quanaokamitodo.jpg" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">BỘ QUẦN ÁO BÓNG
@@ -318,8 +307,7 @@
                 </div>
                 <button style="background-color: white; color: black" class="btn btn-primary leftLst">
                     < </button>
-                        <button style="background-color: white; color: black"
-                            class="btn btn-primary rightLst">></button>
+                        <button style="background-color: white; color: black" class="btn btn-primary rightLst">></button>
             </div>
         </div>
         <!--NEW PRODUCT-->
@@ -421,8 +409,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="card" style="border: none; background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NAM</p>
                         </div>
@@ -430,8 +417,7 @@
                 </div>
                 <div class="col-4">
                     <div class="card" style="border: none;background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NỮ</p>
                         </div>
@@ -439,8 +425,7 @@
                 </div>
                 <div class="col-4">
                     <div class="card" style="border: none;background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO TRẺ EM
                             </p>
@@ -536,8 +521,7 @@
         <div style=" max-width: 1300px;" class="container find">
             <!--END-Position-->
             <!-- Footer -->
-            <footer style="background-color: #333333 !important ;"
-                class=" text-center text-lg-start bg-light text-muted">
+            <footer style="background-color: #333333 !important ;" class=" text-center text-lg-start bg-light text-muted">
                 <!-- Section: Social media -->
                 <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                     <!-- Left -->
@@ -650,14 +634,11 @@
             <!-- Footer -->
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <script src="./script.js"></script>
     <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
