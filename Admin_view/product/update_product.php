@@ -50,14 +50,14 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="./dashboard.css" rel="stylesheet">
+    <link href="../dashboard.css" rel="stylesheet">
 </head>
 
 <body>
+   
     <?php 
-        require_once "../database/config.php" ;
+        require_once "../product/update_product.php" ;
     ?>
-
     
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -74,7 +74,9 @@
             </div>
         </div>
     </header>
-
+    <?php 
+        require_once "../../database/config.php" ;
+    ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -197,28 +199,39 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
             <?php
-            if (isset($_POST['add']))
-            {
-                $prd_categoryID = $_POST['prd_category'];
-                $prd_name = $_POST['prd_name'];
-                $prd_description = $_POST['prd_description'];
-                $prd_price = $_POST['prd_price'];
-                $prd_quantity = $_POST['prd_quantity'];
-                $prd_avatar = $_FILES['prd_avatar']['name'];
-                $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
-                $path = './upload/';
-                $prd_sizeID = $_POST['prd_size'];
-                $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
-                move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
-            }
+            // if (isset($_POST['add']))
+            // {
+            //     $prd_categoryID = $_POST['prd_category'];
+            //     $prd_name = $_POST['prd_name'];
+            //     $prd_description = $_POST['prd_description'];
+            //     $prd_price = $_POST['prd_price'];
+            //     $prd_quantity = $_POST['prd_quantity'];
+            //     $prd_avatar = $_FILES['prd_avatar']['name'];
+            //     $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
+            //     $path = './upload/';
+            //     $prd_sizeID = $_POST['prd_size'];
+            //     $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
+            //     move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
+            // }
                 
+            // ?>
+
+            <?php
+                
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM products WHERE product_id=$id";
+                $ketqua = mysqli_query($mysqli,$sql);
+                $product = mysqli_fetch_array($ketqua);
             ?>
             
-                <form modelAttribute="products" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                <form modelAttribute="products" method="post" action="./process_update_product.php" class="form-horizontal" enctype="multipart/form-data">
                     <fieldset>
                         <hidden path="id" />
                         <!-- Form Name -->
                         <legend>PRODUCTS</legend>
+                        <div class="form-group">
+                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                        </div>
                         <div style="width: 100%" class="form-group ">
                             <label class="col-md-4 control-label" for="category">CATEGORY (required)</label>
                             <?php
@@ -241,14 +254,14 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="title">PRODUCT NAME</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input  id="title" name="prd_name" placeholder="Product name"
+                                <input value="<?php echo $product['product_name']?>"  id="title" name="prd_name" placeholder="Product name"
                                     class="form-control input-md" type="text" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="detailDescription">PRODUCT DESCRIPTION</label>
                             <div style="width: 93.333333% !important;" class="col-md-4 text-des">
-                                <textarea class="form-control" id="summernote"
+                                <textarea value="<?php echo $product['product_description']?>" class="form-control" id="summernote"
                                     name="prd_description"></textarea>
                             </div>
                         </div>
@@ -261,7 +274,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="Price">PRICE</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input  id="Price" name="prd_price" placeholder="Price"
+                                <input value="<?php echo $product['product_price']?>"  id="Price" name="prd_price" placeholder="Price"
                                     class="form-control input-md" type="text" />
                             </div>
                         </div>
@@ -278,7 +291,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="brand">QUANTITY</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input name="prd_quantity" placeholder="Quantity"
+                                <input value="<?php echo $product['product_quantity']?>" name="prd_quantity" placeholder="Quantity"
                                     class="form-control input-md" type="number" />
                             </div>
                         </div>
@@ -314,7 +327,7 @@
                         <div class="form-group">
                             <div class="col-md-4">
                                 <button id="singlebutton" name="add" class="btn btn-primary">
-                                    Thêm sản phẩm
+                                    Edit
                                 </button>
                             </div>
                         </div>

@@ -10,3 +10,5 @@ $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME) or die(mysqli
 if ($mysqli === false) {
   dir("Error: Cannot connect");
 }
+
+?>
