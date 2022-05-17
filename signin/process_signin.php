@@ -22,8 +22,10 @@ function checkAuth($name, $pass, $mysqli)
 
     if ($number_rows == 1) {
       $each = mysqli_fetch_array($result);
+
       session_start();
       $_SESSION['username'] = $each['username'];
+      $_SESSION['role'] = $each['role'];
 
       header('location: /BTL_PHP');
     } else {

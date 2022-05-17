@@ -30,6 +30,12 @@
           echo '<a class="dropdown-item dropdown-item-custom" href="./signout">Đăng xuất </a>';
         }
         ?>
+        <?php
+        if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+          echo '<div class="dropdown-divider margin: 3px 0;"></div>';
+          echo '<a class="dropdown-item dropdown-item-custom" href="./Admin_view">Quản lý </a>';
+        }
+        ?>
       </div>
     </div>
   </div>
