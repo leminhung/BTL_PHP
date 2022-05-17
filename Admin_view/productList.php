@@ -235,7 +235,7 @@
 
                                        
                                         <td>
-                                            <img width="100" src="/">
+                                            <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
                                             
                                         </td>
                                         <td>
