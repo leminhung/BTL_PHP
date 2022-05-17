@@ -41,7 +41,9 @@
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php 
+        require_once "../database/config.php" ;
+    ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -208,42 +210,47 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Avatar</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="" var="product" varStatus="loop">
+                            <?php
+                                $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                            ?>
+                            
+                                <?php
+                                $i=1;
+                                    while($row_product=mysqli_fetch_array($sql_product)){
+                                    ?>
                                     <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
+                                        
+                                        <td><?php echo $i++; ?></td>
+                                        
+                                        <td><?php echo $row_product['product_name']?> </td>
+                                        <td><?php echo $row_product['product_price']?> </td>
+                                        <td><?php echo $row_product['category_id']?> </td>
+                                        <td><?php echo $row_product['product_description']?> </td>
+
+                                       
                                         <td>
-                                            <fmt:setLocale value="vi_VN" scope="session" />
-                                            <fmt:formatNumber value="" type="currency" />
-                                        </td>
-                                        <td>${product.categories.name }</td>
-                                        <td>
-                                            <span id="">
-                                                <c:choose>
-                                                    <c:when test="">
-                                                        <input type="checkbox" checked="checked" readonly="readonly">
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <input type="checkbox" readonly="readonly">
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </span>
+                                            <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
+                                            
                                         </td>
                                         <td>
-                                            <img src="" width="100" height="100">
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-primary" href="" role="button">Edit</a>
-                                            <a class="btn btn-danger" href="" role="button">Delete</a>
+                                                                      
+                                            <a class="btn btn-primary" href="./product/update_product.php?id=<?php echo $row_product['product_id']?>" role="button">Edit</a>
+                                            <a class="btn btn-danger" href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>" role="button">Delete</a>
                                         </td>
                                     </tr>
-                                </c:forEach>
+                                   
+                                    <?php
+                                    }
+                                ?>
+                                <!-- <c:forEach items="" var="product" varStatus="loop">
+                                    
+                                </c:forEach> -->
                             </tbody>
                         </table>
                         <!-- Paging -->
