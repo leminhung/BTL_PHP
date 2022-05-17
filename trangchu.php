@@ -149,7 +149,7 @@ session_start();
                         <div style="padding: 0 0;" class="pad15 ">
                             <div style="margin-bottom: 10px !important;background-color:#333333!important;" class="card">
                                 <span class="ico-sale">-1%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW .png" alt="Card image cap">
+                                <img class="card-img-top link" src="./product img/ADIDAS X SPEE+DFLOW .png" alt="Card image cap">
 
                                 <div style="padding: 0 1px !important;" class="card-body">
                                     <a style="color: orange;" class="card-title product-title" href="">ADIDAS X
