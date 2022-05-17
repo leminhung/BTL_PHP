@@ -14,11 +14,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
 
     <link rel="stylesheet" href="./dashboard.css">
-
-
-
     <link type="text/css" rel="stylesheet" href="${base}/css/simplePagination.css" />
-
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,7 +40,7 @@
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>

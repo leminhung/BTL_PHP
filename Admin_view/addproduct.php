@@ -7,18 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Dashboard Template · Bootstrap v5.1</title>
+    <title>Add Product</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
 
     <link rel="stylesheet" href="./dashboard.css">
-
-    <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- -->
-    <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
@@ -40,21 +35,17 @@
         }
     }
 
-
-
     .col-md-4 {
 
         width: 93.333333% !important;
     }
     </style>
-
-
     <!-- Custom styles for this template -->
     <link href="./dashboard.css" rel="stylesheet">
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -66,7 +57,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
+                <a class="nav-link px-3" href="">Sign out</a>
             </div>
         </div>
     </header>
@@ -84,7 +75,6 @@
                                 Dashboard
                             </a>
                         </li>
-
                         <li class="nav-item sub">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
@@ -94,10 +84,8 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="./saleOrderList.php"> Danh sách đơn hàng </a>
                                 </li>
-
                             </ul>
                         </li>
-
                         <li style="margin-bottom: -36px;" class="nav-item sub">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart"></span>
@@ -154,7 +142,6 @@
                             </a>
                         </li>
                     </ul>
-
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Saved reports</span>
@@ -191,7 +178,6 @@
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
                 <form modelAttribute="products" method="post" action="" class="form-horizontal"
                     enctype="multipart/form-data">
                     <fieldset>

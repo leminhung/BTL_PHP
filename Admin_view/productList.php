@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Dashboard Template · Bootstrap v5.1</title>
+    <title>Product List</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -53,12 +53,10 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
+                <a class="nav-link px-3" href="">Sign out</a>
             </div>
         </div>
     </header>
-
-
     <div class="container-fluid">
         <div class="row">
             <!-- NAVIGATION -->
@@ -187,13 +185,6 @@
                                 <input type="hidden" id="page" name="page" class="form-control">
                                 <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search"
                                     value="" style="margin-right: 5px;">
-                                <select class="form-control" name="categoryId" id="categoryId"
-                                    style="margin-right: 5px;">
-                                    <option>Tất cả</option>
-                                    <c:forEach items="" var="category">
-                                        <option value=""></option>
-                                    </c:forEach>
-                                </select>
                                 <button type="submit" id="btnSearch" name="btnSearch" value="Search"
                                     class="btn btn-primary">Seach</button>
                             </div>
@@ -205,45 +196,31 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">Product Name</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Price Sale</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Avatar</th>
+                                    <th scope="col">Category</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="" var="product" varStatus="loop">
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        <td>
-                                            <fmt:setLocale value="vi_VN" scope="session" />
-                                            <fmt:formatNumber value="" type="currency" />
-                                        </td>
-                                        <td>${product.categories.name }</td>
-                                        <td>
-                                            <span id="">
-                                                <c:choose>
-                                                    <c:when test="">
-                                                        <input type="checkbox" checked="checked" readonly="readonly">
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <input type="checkbox" readonly="readonly">
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <img src="" width="100" height="100">
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-primary" href="" role="button">Edit</a>
-                                            <a class="btn btn-danger" href="" role="button">Delete</a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <img src="" width="100" height="100">
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-primary" href="" role="button">Edit</a>
+                                        <a class="btn btn-danger" href="" role="button">Delete</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <!-- Paging -->

@@ -7,15 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Dashboard Template · Bootstrap v5.1</title>
+    <title>Category List</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
-
-    <!-- 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-
-    <!-- <%--     <link href="${base}/css/simplePagination.css" rel="stylesheet" / --%> -->
     <link type="text/css" rel="stylesheet" href="${base}/css/simplePagination.css" />
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +35,7 @@
 </head>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -201,8 +196,7 @@
                             <tbody>
                                 <?php
                                     $sql = "SELECT * FROM `categories`";
-                                    $categories = mysqli_query($connect,$sql);
-                                    mysqli_close($connect);
+                                    $categories = $mysqli->query($sql);
                                 ?>
                                 <?php foreach($categories as $category){ ?>
                                 <tr>

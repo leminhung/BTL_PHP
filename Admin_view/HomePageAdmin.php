@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
-
-
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,15 +29,13 @@
         }
     }
     </style>
-
-
     <!-- Custom styles for this template -->
     <link href="./dashboard.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- HEADER -->
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"

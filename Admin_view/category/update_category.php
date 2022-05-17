@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <?php require_once "../../connect.php" ?>
+    <?php require_once "../../database/config.php" ?>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -171,7 +171,7 @@
             <?php
                 $id = $_GET['id'];
                 $sql = "SELECT * FROM categories WHERE category_id=$id";
-                $ketqua = mysqli_query($connect,$sql);
+                $ketqua = $mysqli->query($sql);
                 $category = mysqli_fetch_array($ketqua);
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -203,7 +203,7 @@
                         <div class="form-group">
                             <div class="col-md-4">
                                 <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">
-                                    Sua
+                                    UPDATE
                                 </button>
                             </div>
                         </div>
