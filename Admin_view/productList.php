@@ -202,25 +202,41 @@
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Avatar</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Desctiption</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                                ?>
+                                <?php
+                                    $i=1;
+                                    while($row_product=mysqli_fetch_array($sql_product)){
+                                ?>
                                 <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?php echo $i++; ?></td>
+                                    <td><?php echo $row_product['product_name']?></td>
+                                    <td><?php echo $row_product['product_price']?></td>
+                                    <td><?php echo $row_product['product_sale']?></td>
+                                    <td><?php echo $row_product['product_quantity']?></td>
                                     <td>
-                                        <img src="" width="100" height="100">
+                                        <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
                                     </td>
-                                    <td></td>
+                                    <td><?php echo $row_product['category_id']?> </td>
+                                    <td><?php echo $row_product['product_description']?> </td>
                                     <td>
-                                        <a class="btn btn-primary" href="" role="button">Edit</a>
-                                        <a class="btn btn-danger" href="" role="button">Delete</a>
+
+                                        <a class="btn btn-primary"
+                                            href="./product/update_product.php?id=<?php echo $row_product['product_id']?>"
+                                            role="button">Edit</a>
+                                        <a class="btn btn-danger"
+                                            href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>"
+                                            role="button">Delete</a>
                                     </td>
                                 </tr>
+                                <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         <!-- Paging -->

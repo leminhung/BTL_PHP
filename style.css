@@ -100,9 +100,9 @@ body {
 
 .card-custom {
     background-color: #333333 !important;
-    min-height: 270px;
+    height: 420px;
 }
-.card-custom > .card-body > a {
+.card-custom > .card-body > .product-title > a {
     color: orange;
 }
 .card-body {
@@ -132,13 +132,20 @@ body {
     font-weight: 600;
     color: #555555;
     flex-shrink: 0;
+    height: 100px;
+    color: orange;
+    /* text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    word-break: break-word;
+    overflow: hidden; */
 }
 .product-title:hover {
     text-decoration: none !important;
     opacity: 0.8;
 }
 .gach-ngang {
-    width: 22%;
+    /* width: 22%;
     margin: 0 auto;
     padding: 0 auto;
     font-weight: 700;
@@ -147,7 +154,8 @@ body {
     height: 3px;
     left: 40%;
     position: absolute;
-    top: 68%;
+    top: 68%; */
+    /* visibility: hidden; */
 }
 .price {
     display: flex;
@@ -164,6 +172,7 @@ body {
     font-weight: 500;
     text-decoration: line-through;
     margin-bottom: auto;
+    height: 18px;
 }
 
 .new-price {

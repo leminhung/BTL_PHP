@@ -249,10 +249,15 @@ session_start();
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <button style="background-color: white; color: black" class="btn btn-primary leftLst">
                     < </button>
                         <button style="background-color: white; color: black"
                             class="btn btn-primary rightLst">></button>
+=======
+                <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i class="fa-solid fa-chevron-left"></i></button>
+                <button style="background-color: white; color: black" class="btn btn-primary rightLst"><i class="fa-solid fa-chevron-right"></i></button>
+>>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
             </div>
         </div>
         <!--NEW PRODUCT-->

@@ -7,13 +7,18 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Add Product</title>
+    <title>Dashboard Template · Bootstrap v5.1</title>
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
     <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
 
     <link rel="stylesheet" href="./dashboard.css">
+
+    <!--     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ -->
+    <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
@@ -35,25 +40,25 @@
         }
     }
 
+
+
     .col-md-4 {
 
         width: 93.333333% !important;
     }
     </style>
+
+
     <!-- Custom styles for this template -->
-    <link href="./dashboard.css" rel="stylesheet">
+    <link href="../dashboard.css" rel="stylesheet">
 </head>
 
 <body>
-<<<<<<< HEAD
-    <?php require_once "../database/config.php" ?>
-=======
+   
     <?php 
-        require_once "../database/config.php" ;
+        require_once "../product/update_product.php" ;
     ?>
-
     
->>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
     <!-- HEADER -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
@@ -65,11 +70,13 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="">Sign out</a>
+                <a class="nav-link px-3" href="${base }/logout">Sign out</a>
             </div>
         </div>
     </header>
-
+    <?php 
+        require_once "../../database/config.php" ;
+    ?>
 
     <div class="container-fluid">
         <div class="row">
@@ -83,6 +90,7 @@
                                 Dashboard
                             </a>
                         </li>
+
                         <li class="nav-item sub">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
@@ -92,8 +100,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="./saleOrderList.php"> Danh sách đơn hàng </a>
                                 </li>
+
                             </ul>
                         </li>
+
                         <li style="margin-bottom: -36px;" class="nav-item sub">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart"></span>
@@ -150,6 +160,7 @@
                             </a>
                         </li>
                     </ul>
+
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Saved reports</span>
@@ -186,35 +197,41 @@
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-<<<<<<< HEAD
-                <form modelAttribute="products" method="post" action="" class="form-horizontal"
-                    enctype="multipart/form-data">
-=======
 
             <?php
-            if (isset($_POST['add']))
-            {
-                $prd_categoryID = $_POST['prd_category'];
-                $prd_name = $_POST['prd_name'];
-                $prd_description = $_POST['prd_description'];
-                $prd_price = $_POST['prd_price'];
-                $prd_quantity = $_POST['prd_quantity'];
-                $prd_avatar = $_FILES['prd_avatar']['name'];
-                $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
-                $path = './upload/';
-                $prd_sizeID = $_POST['prd_size'];
-                $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
-                move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
-            }
+            // if (isset($_POST['add']))
+            // {
+            //     $prd_categoryID = $_POST['prd_category'];
+            //     $prd_name = $_POST['prd_name'];
+            //     $prd_description = $_POST['prd_description'];
+            //     $prd_price = $_POST['prd_price'];
+            //     $prd_quantity = $_POST['prd_quantity'];
+            //     $prd_avatar = $_FILES['prd_avatar']['name'];
+            //     $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
+            //     $path = './upload/';
+            //     $prd_sizeID = $_POST['prd_size'];
+            //     $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
+            //     move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
+            // }
                 
+            // ?>
+
+            <?php
+                
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM products WHERE product_id=$id";
+                $ketqua = mysqli_query($mysqli,$sql);
+                $product = mysqli_fetch_array($ketqua);
             ?>
             
-                <form modelAttribute="products" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
->>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
+                <form modelAttribute="products" method="post" action="./process_update_product.php" class="form-horizontal" enctype="multipart/form-data">
                     <fieldset>
                         <hidden path="id" />
                         <!-- Form Name -->
                         <legend>PRODUCTS</legend>
+                        <div class="form-group">
+                            <input type="hidden" name="product_id" value="<?php echo $id ?>">
+                        </div>
                         <div style="width: 100%" class="form-group ">
                             <label class="col-md-4 control-label" for="category">CATEGORY (required)</label>
                             <?php
@@ -237,14 +254,14 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="title">PRODUCT NAME</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input  id="title" name="prd_name" placeholder="Product name"
+                                <input value="<?php echo $product['product_name']?>"  id="title" name="prd_name" placeholder="Product name"
                                     class="form-control input-md" type="text" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="detailDescription">PRODUCT DESCRIPTION</label>
                             <div style="width: 93.333333% !important;" class="col-md-4 text-des">
-                                <textarea class="form-control" id="summernote"
+                                <textarea value="<?php echo $product['product_description']?>" class="form-control" id="summernote"
                                     name="prd_description"></textarea>
                             </div>
                         </div>
@@ -257,7 +274,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="Price">PRICE</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input  id="Price" name="prd_price" placeholder="Price"
+                                <input value="<?php echo $product['product_price']?>"  id="Price" name="prd_price" placeholder="Price"
                                     class="form-control input-md" type="text" />
                             </div>
                         </div>
@@ -274,7 +291,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="brand">QUANTITY</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <input name="prd_quantity" placeholder="Quantity"
+                                <input value="<?php echo $product['product_quantity']?>" name="prd_quantity" placeholder="Quantity"
                                     class="form-control input-md" type="number" />
                             </div>
                         </div>
@@ -310,7 +327,7 @@
                         <div class="form-group">
                             <div class="col-md-4">
                                 <button id="singlebutton" name="add" class="btn btn-primary">
-                                    Thêm sản phẩm
+                                    Edit
                                 </button>
                             </div>
                         </div>
