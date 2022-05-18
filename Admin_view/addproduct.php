@@ -210,6 +210,10 @@
                 $prd_sizeID = $_POST['prd_size'];
                 $sql_insert_product = mysqli_query($mysqli,"INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
                 move_uploaded_file($prd_avatar_tmp,$path.$prd_avatar);
+                header('location:./productList.php');
+                // echo '<script type="text/javascript">alert("Thêm sản phẩm thành công!!!");</script>';
+               
+                
             }
                 
             ?>
