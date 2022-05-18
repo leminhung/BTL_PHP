@@ -15,15 +15,17 @@ if (isset($_POST['signin'])) {
 function checkAuth($name, $pass, $mysqli)
 {
   if (empty($err)) {
-    $sql = "SELECT username, password FROM users WHERE username = '$name' and password = '$pass'";
+    $sql = "SELECT * FROM users WHERE username = '$name' and password = '$pass'";
     $result = $mysqli->query($sql) or die($mysqli->error);
 
     $number_rows = mysqli_num_rows($result);
 
     if ($number_rows == 1) {
       $each = mysqli_fetch_array($result);
+
       session_start();
       $_SESSION['username'] = $each['username'];
+      $_SESSION['role'] = $each['role'];
 
       header('location: /BTL_PHP');
     } else {
