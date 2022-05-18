@@ -71,10 +71,11 @@ session_start();
 
                     $search ='';
                     if(isset($_GET['search'])){
-                        $search = $_GET['search'];
+                        $search = strtoupper($_GET['search']);
                     }
+                    //phan trang
                     $sql_so_san_pham ="SELECT COUNT(*) FROM products
-                    WHERE product_name LIKE '%$search%'";
+                    WHERE UPPER(product_name) LIKE '%$search%'";
                     $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
                     $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
                     $so_san_pham = $kq_so_san_pham['COUNT(*)'];
@@ -92,11 +93,12 @@ session_start();
                     }else {
                         $sql = "SELECT * FROM products
                         WHERE
-                        (product_name LIKE '%$search%')
+                        UPPER(product_name) LIKE '%$search%'
                         LIMIT $so_san_pham_tren_1_trang offset $boqua";
                     }
                     $products = $mysqli->query($sql);
                 ?>
+                <!-- danh sach sp -->
                 <div class="row list-product">
                     <?php
                     if (is_array($products) || is_object($products)){
@@ -130,58 +132,14 @@ session_start();
                         </div>
                     </div>
                     <?php }} ?>
-                    <!-- <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-22%</span>
-                            <img class="card-img-top link" src="./product img/nike ball.jpeg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE FOOTBALL FLIGHT PREMIER
-                                    LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
-                                <br>
-                                <span class="card-text old-price">4,495,000₫</span>
-                                <span class="card-text new-price"> 3,500,000₫</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-22%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg"
-                                alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS X SPEEDFLOW .1 TF
-                                    METEORITE - RED/CORE BLACK/SOLAR RED</a>
-                                <br>
-                                <span class="card-text old-price">3,600,000₫</span>
-                                <span class="card-text new-price"> 2,750,000₫</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-24%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg"
-                                alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS COPA SENSE .3 FG
-                                    METEORITE - RED/FOOTWEAR WHITE/SOLAR RED</a>
-                                <br>
-                                <span class="card-text old-price">2,695,000₫</span>
-                                <span class="card-text new-price"> 1,800,000₫</span>
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <hr>
                 <nav style="margin: auto; color: orange !important;" class="col-4" aria-label="Page navigation example">
                     <ul class="pagination">
                         <?php for($i=1; $i<=$so_trang; $i++){ ?>
                         <li class="page-item"><a style="color: orange !important;" class="page-link"
-                                href="?trang=<?php echo $i ?>&timkiem=<?php echo $search ?>"><?php echo $i?></a></li>
+                                href="?trang=<?php echo $i ?>&timkiem=<?php echo $search ?>"><?php echo $i?></a>
+                        </li>
                         <?php }?>
                     </ul>
                 </nav>

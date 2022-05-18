@@ -198,15 +198,19 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Price Sale</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Avatar</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Action</th>
+                                    <<<<<<< HEAD <th scope="col">Price Sale</th>
+                                        <th scope="col">Quantity</th>
+                                        =======
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Description</th>
+                                        >>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
+                                        <th scope="col">Avatar</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <<<<<<< HEAD <tr>
                                     <th scope="row"></th>
                                     <td></td>
                                     <td></td>
@@ -220,7 +224,48 @@
                                         <a class="btn btn-primary" href="" role="button">Edit</a>
                                         <a class="btn btn-danger" href="" role="button">Delete</a>
                                     </td>
-                                </tr>
+                                    </tr>
+                                    =======
+                                    <?php
+                                $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                            ?>
+
+                                    <?php
+                                $i=1;
+                                    while($row_product=mysqli_fetch_array($sql_product)){
+                                    ?>
+                                    <tr>
+
+                                        <td><?php echo $i++; ?></td>
+
+                                        <td><?php echo $row_product['product_name']?> </td>
+                                        <td><?php echo $row_product['product_price']?> </td>
+                                        <td><?php echo $row_product['category_id']?> </td>
+                                        <td><?php echo $row_product['product_description']?> </td>
+
+
+                                        <td>
+                                            <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
+
+                                        </td>
+                                        <td>
+
+                                            <a class="btn btn-primary"
+                                                href="./product/update_product.php?id=<?php echo $row_product['product_id']?>"
+                                                role="button">Edit</a>
+                                            <a class="btn btn-danger"
+                                                href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>"
+                                                role="button">Delete</a>
+                                        </td>
+                                    </tr>
+
+                                    <?php
+                                    }
+                                ?>
+                                    <!-- <c:forEach items="" var="product" varStatus="loop">
+
+                                </c:forEach> -->
+                                    >>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
                             </tbody>
                         </table>
                         <!-- Paging -->

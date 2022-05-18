@@ -203,7 +203,11 @@
                         <div class="form-group">
                             <div class="col-md-4">
                                 <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">
+<<<<<<< HEAD
                                     UPDATE
+=======
+                                    Edit
+>>>>>>> 716ec229568da5340d48b6bfbdfad081dc407603
                                 </button>
                             </div>
                         </div>
