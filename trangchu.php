@@ -249,10 +249,10 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <button style="background-color: white; color: black" class="btn btn-primary leftLst">
-                    < </button>
-                        <button style="background-color: white; color: black"
-                            class="btn btn-primary rightLst">></button>
+                <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i
+                        class="fa-solid fa-chevron-left"></i></button>
+                <button style="background-color: white; color: black" class="btn btn-primary rightLst"><i
+                        class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
         <!--NEW PRODUCT-->

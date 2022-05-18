@@ -100,7 +100,7 @@ body {
 
 .card-custom {
     background-color: #333333 !important;
-    min-height: 270px;
+    height: 420px;
 }
 .card-custom > .card-body > .product-title > a {
     color: orange;
