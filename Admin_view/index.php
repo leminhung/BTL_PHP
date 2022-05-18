@@ -36,10 +36,8 @@
 <?php
 
 session_start();
-if (isset($_SESSION['role'])) {
-    echo '<script type="text/javascript">alert("' . $_SESSION['role'] . '");</script>';
-} else {
-    echo '<script type="text/javascript">alert("' . $_SESSION['role'] . '");</script>';
+if (isset($_SESSION['role']) && $_SESSION['role'] != 1) {
+    header('location: /BTL_PHP');
 }
 ?>
 
