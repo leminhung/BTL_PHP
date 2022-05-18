@@ -15,7 +15,7 @@ if (isset($_POST['signin'])) {
 function checkAuth($name, $pass, $mysqli)
 {
   if (empty($err)) {
-    $sql = "SELECT username, password FROM users WHERE username = '$name' and password = '$pass'";
+    $sql = "SELECT * FROM users WHERE username = '$name' and password = '$pass'";
     $result = $mysqli->query($sql) or die($mysqli->error);
 
     $number_rows = mysqli_num_rows($result);

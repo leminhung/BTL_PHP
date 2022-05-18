@@ -11,8 +11,13 @@
                                     ?>
       </a>
       <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item dropdown-item-custom" href="./signup">Đăng ký</a>
-        <div class="dropdown-divider margin: 3px 0;"></div>
+
+        <?php
+        if (!isset($_SESSION['username'])) {
+          echo '<a class="dropdown-item dropdown-item-custom" href="./signup">Đăng ký</a>';
+          echo '<div class="dropdown-divider margin: 3px 0;"></div>';
+        }
+        ?>
         <?php
         if (!isset($_SESSION['username'])) {
           echo '<a class="dropdown-item dropdown-item-custom" href="./signin">Đăng nhập</a>';
@@ -28,6 +33,12 @@
         if (isset($_SESSION['username'])) {
           echo '<div class="dropdown-divider margin: 3px 0;"></div>';
           echo '<a class="dropdown-item dropdown-item-custom" href="./signout">Đăng xuất </a>';
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+          echo '<div class="dropdown-divider margin: 3px 0;"></div>';
+          echo '<a class="dropdown-item dropdown-item-custom" href="./Admin_view">Quản lý </a>';
         }
         ?>
       </div>
