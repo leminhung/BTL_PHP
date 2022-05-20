@@ -47,32 +47,32 @@
 						<div class="row border-top border-bottom">
 							<div class="row main align-items-center">
 								<div class="col-2">
-									<img class="img-fluid" src="${base }/upload/${ci.productAvatar}">
+									<img class="img-fluid" src="">
 								</div>
 								<div class="col">
-									<div class="row text-muted">${ci.productName }</div>
+									<div class="row text-muted"></div>
 									<div class="row">Cotton T-shirt</div>
 								</div>
 								<div class="col">
-									<a style="cursor: pointer " href="${base }/cart/view" onclick="minusQuanlityCart('${base }', ${ci.productId})"  >-</a>
-									<span id="quanlity_${ci.productId}"  class="border" >${ci.quanlity }</span>
-									<a style="cursor: pointer " href="${base }/cart/view" onclick="plusQuanlityCart('${base }', ${ci.productId})"  >+</a>
+									<a style="cursor: pointer "  >-</a>
+									<span id="quanlity_${ci.productId}"  class="border" >quantity</span>
+									<a style="cursor: pointer "  >+</a>
 								</div>
 								
 								
 								
-								 <c:if test="${not empty TB }">
+								 <!-- <c:if test="${not empty TB }">
        								<div style="color: red" role="alert">
         									${TB }
       								 </div>
-      							</c:if>
+      							</c:if> -->
 								<div class="col">
 									<fmt:setLocale value="vi_VN" scope="session" />
 									<fmt:formatNumber value="${ci.priceUnit }" type="currency" />
 									<!-- &euro; 44.00 <span class="close">&#10005;</span> -->
 								</div>
 								<div class="col">
-									<a style="margin-top: 0px" type="button" href="${base}/cart/delete/${ci.productId}" class="btnn btn-danger" >Xóa</a>
+									<a style="margin-top: 0px" type="button"  class="btnn btn-danger" >Xóa</a>
 								</div>
 							</div>
 						</div>
@@ -127,7 +127,7 @@
 						<!-- <button type="submit" class="btn">CHECKOUT</button> -->
 					
 					<div class="back-to-shop">
-						<a href="${base}/home">&leftarrow;</a><span class="text-muted">Back to
+						<a href="">&leftarrow;</a><span class="text-muted">Back to
 							shop</span>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col" style="padding-left: 0;">ITEMS ${totalItems}</div>
+						<div class="col" style="padding-left: 0;"></div>
 						
 					</div>
 					<form>
