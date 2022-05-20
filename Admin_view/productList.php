@@ -41,7 +41,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
         require_once "../database/config.php" ;
     ?>
     <!-- HEADER -->
@@ -200,7 +200,8 @@
                                     class="btn btn-primary">Seach</button>
                             </div>
                             <div>
-                                <a class="btn btn-outline-primary mb-1" href="" role="button">Add New</a>
+                                <a class="btn btn-outline-primary mb-1" href="./addproduct.php" role="button">Add
+                                    New</a>
                             </div>
                         </div>
                         <table class="table table-striped">
@@ -216,40 +217,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
+                                <?php
                                 $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
                             ?>
-                            
+
                                 <?php
                                 $i=1;
                                     while($row_product=mysqli_fetch_array($sql_product)){
                                     ?>
-                                    <tr>
-                                        
-                                        <td><?php echo $i++; ?></td>
-                                        
-                                        <td><?php echo $row_product['product_name']?> </td>
-                                        <td><?php echo $row_product['product_price']?> </td>
-                                        <td><?php echo $row_product['category_id']?> </td>
-                                        <td><?php echo $row_product['product_description']?> </td>
+                                <tr>
 
-                                       
-                                        <td>
-                                            <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
-                                            
-                                        </td>
-                                        <td>
-                                                                      
-                                            <a class="btn btn-primary" href="./product/update_product.php?id=<?php echo $row_product['product_id']?>" role="button">Edit</a>
-                                            <a class="btn btn-danger" href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>" role="button">Delete</a>
-                                        </td>
-                                    </tr>
-                                   
-                                    <?php
+                                    <td><?php echo $i++; ?></td>
+
+                                    <td><?php echo $row_product['product_name']?> </td>
+                                    <td><?php echo $row_product['product_price']?> </td>
+                                    <td><?php echo $row_product['category_id']?> </td>
+                                    <td><?php echo $row_product['product_description']?> </td>
+
+
+                                    <td>
+                                        <img width="100" src="./upload/<?php echo $row_product['product_image']?>">
+
+                                    </td>
+                                    <td>
+
+                                        <a class="btn btn-primary"
+                                            href="./product/update_product.php?id=<?php echo $row_product['product_id']?>"
+                                            role="button">Edit</a>
+                                        <a class="btn btn-danger"
+                                            href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>"
+                                            onclick="return comfirm('Bạn có muốn xóa <?php echo $row_product['product_name']?>?')"
+                                            role="button">Delete</a>
+                                    </td>
+                                </tr>
+
+                                <?php
                                     }
                                 ?>
                                 <!-- <c:forEach items="" var="product" varStatus="loop">
-                                    
+
                                 </c:forEach> -->
                             </tbody>
                         </table>

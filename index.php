@@ -11,10 +11,12 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
     <title>Phương Nam Sport</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -27,16 +29,54 @@ session_start();
         <div class="row col-12" style="padding-left: 0px;">
             <div class="col-3 justify-content-start" style="padding-left: 0px;">
                 <div style="background-color: #333333 !important;" class="list-group list-group list-group-flush">
-                    <a style="background-color: #333333 !important; color: orange !important" href="#" class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
+                    <a style="background-color: #333333 !important; color: orange !important" href="#"
+                        class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
                     <?php
                     $sql = "SELECT * FROM `categories`";
                     $categories = $mysqli->query($sql);
                     ?>
                     <?php foreach ($categories as $category) { ?>
-                        <a href="#" class="list-group-item list-group-item-action name-category-item"><?php echo $category['category_name'] ?></a>
+                    <a href="?categoryId=<?php echo $category['category_id'] ?>"
+                        class="list-group-item list-group-item-action name-category-item"><?php echo $category['category_name'] ?></a>
                     <?php } ?>
                 </div>
             </div>
+            <?php
+                $trang =1;
+                if(isset($_GET['trang'])){
+                    $trang = $_GET['trang'];
+                }
+
+                $search ='';
+                if(isset($_GET['search'])){
+                    $search = strtoupper($_GET['search']);
+                }
+                //phan trang
+                $sql_so_san_pham ="SELECT COUNT(*) FROM products
+                WHERE UPPER(product_name) LIKE '%$search%'";
+                $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
+                $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
+                $so_san_pham = $kq_so_san_pham['COUNT(*)'];
+                $so_san_pham_tren_1_trang = 9;
+                $so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
+                $boqua = $so_san_pham_tren_1_trang*($trang-1);
+
+                $sql= "";
+                if(isset($_GET['categoryId'])){
+                    $category_id = $_GET['categoryId'];
+                    $sql = "SELECT * FROM products
+                    WHERE
+                    (category_id = $category_id)
+                    LIMIT $so_san_pham_tren_1_trang offset $boqua";
+                }else {
+                    $sql = "SELECT * FROM products
+                    WHERE
+                    UPPER(product_name) REGEXP BINARY '^$search'
+                    LIMIT $so_san_pham_tren_1_trang offset $boqua";
+                }
+                $products = $mysqli->query($sql);
+                //UPPER(product_name) LIKE '%$search%'
+            ?>
             <div class="col-9 content">
                 <div class="row">
                     <img src="../Bootstrap/product img/banner-collection.jpg" alt="">
@@ -49,8 +89,7 @@ session_start();
                 </div>
                 <div style="right: 0; color: white;" class=" float-right justify-content-end">
                     Sắp xếp theo
-                    <select style="border-radius: 3px;" name="" id="">
-                        <option value="">Mới nhất</option>
+                    <select style="border-radius: 3px;" name="filter" id="">
                         <option value="">Giá tăng dần</option>
                         <option value="">Giá giảm dần</option>
                         <option value="">Tên: A-Z</option>
@@ -60,179 +99,47 @@ session_start();
                 <hr>
                 <!-- danh sach sp -->
                 <div class="row list-product">
+                    <?php
+                    if (is_array($products) || is_object($products)){
+                        foreach($products as $product) {
+                    ?>
                     <div class="col-lg-3 col-md-4 col-sm-6  ">
                         <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-22%</span>
-                            <img class="card-img-top link" src="./product img/nike ball.jpeg" alt="Card image cap">
-                            <hr class="gach-ngang">
+                            <span class="ico-sale">-<?php echo $product['product_sale'] ?>%</span>
+                            <img class="card-img-top link" src="<?php echo $product['product_image']?>"
+                                alt="Card image cap">
                             <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE FOOTBALL FLIGHT PREMIER LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
+                                <a class="card-title product-title"
+                                    href="./chitiet.php"><?php echo $product['product_name']?></a>
+                                <br>
+                                <div class="price">
+                                    <span class="card-text old-price"><?php echo $product['product_price']?>đ</span>
+                                    <span class="card-text new-price">
+                                        <?php
+                                        $newprice = $product['product_price'];
+                                        if($product['product_sale'] >0){
+                                            $newprice = $product['product_price'] - $product['product_price']*$product['product_sale']/100;
+                                            echo ($newprice);
+                                        }
+                                        else {
+                                             echo $newprice;
+                                        }
+                                        ?>đ
+                                    </span>
+                                </div>
                             </div>
-                            <br>
-                            <span class="card-text old-price">4,495,000₫</span>
-                            <span class="card-text new-price"> 3,500,000₫</span>
-                            </div>
-                        </div>                       
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-22%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                            <a class="card-title product-title" href="./chitiet.html">ADIDAS X SPEEDFLOW .1 TF METEORITE - RED/CORE BLACK/SOLAR RED</a>
-                            </div>
-                            <br>
-                            <span class="card-text old-price">3,600,000₫</span>
-                            <span class="card-text new-price"> 2,750,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-24%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                            <a class="card-title product-title" href="./chitiet.html">ADIDAS COPA SENSE .3 FG METEORITE - RED/FOOTWEAR WHITE/SOLAR RED</a>
-
-                             </div>                           
-                            <br>
-                            <span class="card-text old-price">2,695,000₫</span>
-                            <span class="card-text new-price"> 1,800,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-22%</span>
-                            <img class="card-img-top link" src="./product img/NIKE MERCURIAL ZOOM.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE FOOTBALL FLIGHT PREMIER LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
-                            </div>
-                            
-                            <br>
-                            <span class="card-text old-price">3,600,000₫</span>
-                            <span class="card-text new-price"> 2,750,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-1%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 TF.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <a class="card-title product-title" href="./chitiet.html">ADIDAS COPA SENSE .3 TF METEORITE - RED/FOOTWEAR WHITE/SOLAR RED/PRO  </a>
-                            <br>
-                            <span class="card-text old-price">1,900,000₫</span>
-                            <span class="card-text new-price"> 1,890,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-21%</span>
-                            <img class="card-img-top link" src="./product img/nike_tiembi_shoe.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE TIEMPO REACT LEGEND 9 CLUB TF - WHITE/DARK SMOKE GREY/BLACK/YELLOW</a>
-
-                             </div>
-                            <br>
-                            <span class="card-text old-price">2,895,000₫</span>
-                            <span class="card-text new-price"> 1,940,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-1%</span>
-                            <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW .png" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                 <a style="display: inline-block;"  class="card-title" href="./chitiet.html">ADIDAS X SPEEDFLOW .3 TF ESCAPELIGHT - CORE BLACK/SONIC INK/SOLAR YELLOW</a>
-                            </div>
-                            <br>
-                            <span class="card-text old-price">1,900,000₫</span>
-                            <span class="card-text new-price"> 1,890,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-16%</span>
-                            <img class="card-img-top link" src="./product img/boc ong dong ADIDAS X LESTO SHIN GUARDS - BLACK.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                <a class="card-title product-title" href="./chitiet.html">BỌC ỐNG ĐỒNG ADIDAS X LESTO SHIN GUARDS - BLACK</a>
-                            </div>
-                            <br>
-                            <span class="card-text old-price"></span>
-                            <span class="card-text new-price"> 320,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-29%</span>
-                            <img class="card-img-top link" src="./product img/boc ong.jpeg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <a class="card-title product-title" href="./chitiet.html">BỌC ỐNG ĐỒNG ADIDAS TIRO CLUB SHIN GUARDS - BLACK/WHITE</a>
-                            <br>
-                            <span class="card-text old-price">380,000₫</span>
-                            <span class="card-text new-price"> 270,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-0%</span>
-                            <img class="card-img-top link" src="./product img/quanaokamitovang.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                            <div class="product-title">
-                                <a class="card-title product-title" href="./chitiet.html">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO KMSH210250 TRẮNG VÀNG</a>
-                            </div>
-                            <br>
-                            <span class="card-text old-price"></span>
-                            <span class="card-text new-price"> 199,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6  ">
-                        <div style="margin-bottom: 10px !important;" class="card card-custom">
-                            <span class="ico-sale">-0%</span>
-                            <img class="card-img-top link" src="./product img/quanaokamitodo.jpg" alt="Card image cap">
-                            <hr class="gach-ngang">
-                            <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO KMSH210510 ĐỎ</a>
-                             <br>
-                                <span class="card-text old-price"></span>
-                                <span class="card-text new-price"> 199,000₫</span>
-                            </div>
-                        </div>                       
-                    </div>
-                   
+                    <?php }} ?>
                 </div>
                 <hr>
                 <nav style="margin: auto; color: orange !important;" class="col-4" aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a style="color: orange !important;" class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a style="color: orange !important;" class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a style="color: orange !important;" class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a style="color: orange !important;" class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a style="color: orange !important;" class="page-link" href="#">Next</a>
+                        <?php for($i=1; $i<=$so_trang; $i++){ ?>
+                        <li class="page-item"><a style="color: orange !important;" class="page-link"
+                                href="?trang=<?php echo $i ?>&timkiem=<?php echo $search ?>"><?php echo $i?></a>
                         </li>
+                        <?php }?>
                     </ul>
                 </nav>
             </div>
@@ -352,11 +259,14 @@ session_start();
     </footer>
     <!-- Footer -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <script src="./script.js"></script>
     <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
