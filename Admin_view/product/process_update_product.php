@@ -24,4 +24,6 @@ $sql = "UPDATE products
     product_id = $id ";
    
 $mysqli->query($sql);
+echo '<script type="text/javascript">alert("Sửa sản phẩm thành công!!!");</script>';
 header('location:../productList.php');
+?>

@@ -211,7 +211,7 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">Avatar</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -225,7 +225,14 @@
                                 $i=1;
                                     while($row_product=mysqli_fetch_array($sql_product)){
                                     ?>
-                                <tr>
+                                    <tr>
+                                        
+                                        <td><?php echo $i++; ?></td>
+                                        
+                                        <td><?php echo $row_product['product_name']?> </td>
+                                        <td><?php echo $row_product['product_price']?> </td>
+                                        <td><?php echo $row_product['category_id']?> </td>
+                                        <td><?php echo $row_product['product_quantity']?> </td>
 
                                     <td><?php echo $i++; ?></td>
 
