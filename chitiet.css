@@ -1,0 +1,14 @@
+.product-desc {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.add-product {
+    color: #ffc107;
+    background-color: transparent !important;
+}
+.add-product:hover {
+    text-decoration: none !important;
+    color: #000;
+}
