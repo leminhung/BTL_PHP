@@ -56,7 +56,6 @@
                             <?php
                             if (is_array($cart) || is_object($cart)){
                             foreach($cart as $id => $each):
-                                $_SESSION['items']++;
                             ?>
                             <div class="row main align-items-center">
                                 <div class="col-2">

@@ -66,14 +66,14 @@
                                 $i=1;
                                     while($row_product=mysqli_fetch_array($sql_product)){
                                     ?>
-                                    <tr>
-                                        
-                                        <td><?php echo $i++; ?></td>
-                                        
-                                        <td><?php echo $row_product['product_name']?> </td>
-                                        <td><?php echo $row_product['product_price']?> </td>
-                                        <td><?php echo $row_product['category_id']?> </td>
-                                        <td><?php echo $row_product['product_quantity']?> </td>
+                                <tr>
+
+                                    <td><?php echo $i++; ?></td>
+
+                                    <td><?php echo $row_product['product_name']?> </td>
+                                    <td><?php echo $row_product['product_price']?> </td>
+                                    <td><?php echo $row_product['category_id']?> </td>
+                                    <td><?php echo $row_product['product_quantity']?> </td>
 
 
 
@@ -88,7 +88,7 @@
                                             role="button">Edit</a>
                                         <a class="btn btn-danger"
                                             href="./product/delete_product.php?id=<?php echo $row_product['product_id'] ?>"
-                                            onclick="return comfirm('Bạn có muốn xóa <?php echo $row_product['product_name']?>?')"
+                                            onclick="return confirm('Bạn có muốn xóa <?php echo $row_product['product_name']?>?')"
                                             role="button">Delete</a>
                                     </td>
                                 </tr>
