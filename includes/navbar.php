@@ -1,7 +1,8 @@
 <div class="row header">
     <div class="row head">
         <div class="col-12 nav-item dropdown nav-custom">
-            <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="far fa-user"></i> <?php
                                             if (isset($_SESSION['name'])) {
                                                 echo $_SESSION['name'];
@@ -50,16 +51,31 @@
         <div class="col-6">
             <form action="" method="GET">
                 <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" value="" name="search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username"
+                        value="" name="search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col-3 py-3">
-            <a href="./cart.php" style="color:#fff !important;"><i style="font-size: 24px !important;" class="fas fa-shopping-cart"></i></a>
+        <?php
+            $items = $_SESSION['items'];
+        ?>
+        <?php
+        if(!isset($_SESSION['username'])) {?>
+        <div class="col-3 py-3 cart-icon">
+            <p class="items-cart" style="display: none;"></p>
+            <a href="./signin" style="color:#fff !important;"><i style="font-size: 24px !important;"
+                    class="fas fa-shopping-cart"></i></a>
         </div>
+        <?php } else {?>
+        <div class="col-3 py-3 cart-icon">
+            <p class="items-cart"><?php echo $items ?></p>
+            <a href="./cart.php" style="color:#fff !important;"><i style="font-size: 24px !important;"
+                    class="fas fa-shopping-cart"></i></a>
+        </div>
+        <?php }?>
     </div>
 
     <div class="row col-12 mb-3">

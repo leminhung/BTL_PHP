@@ -8,7 +8,11 @@ if(empty($_SESSION['cart'][$id])){
     $each = mysqli_fetch_array($result);
     $_SESSION['cart'][$id]['image'] = $each['product_image'];
     $_SESSION['cart'][$id]['name'] = $each['product_name'];
-    $_SESSION['cart'][$id]['price'] = $each['product_price'];
+    if($each['product_sale'] >0){
+        $_SESSION['cart'][$id]['price'] = $each['product_price'] - $each['product_price']*$each['product_sale']/100;
+    }else {
+        $_SESSION['cart'][$id]['price'] = $each['product_price'];
+    }
     $_SESSION['cart'][$id]['quantity'] = 1;
 }else {
     $_SESSION['cart'][$id]['quantity'] ++;
