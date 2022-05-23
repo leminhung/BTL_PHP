@@ -131,7 +131,7 @@
                         <?php }?>
 
                         <?php if($product['product_sale'] > 0) { ?>
-                        <span class="card-text new-price">
+                        <span style="margin-left: 20px; font-size: 30px" class="card-text new-price">
                             <?php echo ($product['product_price'] - $product['product_price']*$product['product_sale']/100)  ?>
                             đ</span>
                         <?php }else {?>
