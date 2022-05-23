@@ -10,8 +10,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
     <title>Trang chủ</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -19,6 +19,9 @@ session_start();
 </head>
 
 <body>
+    <?php
+        require_once "./database/config.php" ;
+    ?>
     <div class="container-fluid">
         <?php
         include './includes/navbar.php';
@@ -61,196 +64,42 @@ session_start();
         <div class="row">
             <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                 <div class="MultiCarousel-inner">
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important; background-color:#333333!important;"
-                                class="card ">
-                                <span class="ico-sale">-22%</span>
-                                <img class="card-img-top link" src="./product img/nike ball.jpeg" alt="Card image cap">
+                    <?php
+                        $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                    ?>
 
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="./chitiet.php">NIKE
-                                        FOOTBALL
-                                        FLIGHT PREMIER LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
-                                    <br>
-                                    <span class="card-text old-price">4,495,000₫</span>
-                                    <span class="card-text new-price"> 3,500,000₫</span>
+
+                    <?php
+                                
+                    while($row_product=mysqli_fetch_array($sql_product)){
+                    ?>
+                        <div class="item">
+                            <div style="padding: 0 0;" class="pad15 ">
+                                <div style="margin-bottom: 10px !important; background-color:#333333!important;"
+                                    class="card ">
+                                    <span class="ico-sale">-<?php echo $row_product['product_sale']?>%</span>
+                                    <img class="card-img-top link" src="./Admin_view/upload/<?php echo $row_product['product_image']?>" alt="Card image cap">
+
+                                    <div style="padding: 0 1px !important;" class="card-body">
+                                        <a style="color: orange;" class="card-title product-title" href="./chitiet.php?id=<?php echo $row_product['product_id'] ?>"><?php echo $row_product['product_name']?></a>
+                                        <br>
+                                        <span class="card-text old-price"><?php echo $row_product['product_price']?></span>
+                                        <span class="card-text new-price"><?php echo $row_product['product_price'] - ($row_product['product_sale']/100 * $row_product['product_price']) ?></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>      
 
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-22%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg"
-                                    alt="Card image cap">
+                    <?php
+                        }
+                    ?>
 
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">ADIDAS X
-                                        SPEEDFLOW .1 TF METEORITE - RED/CORE BLACK/SOLAR RED/PRO ULTRA</a>
-                                    <br>
-                                    <span class="card-text old-price">3,600,000₫</span>
-                                    <span class="card-text new-price"> 2,750,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-24%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg"
-                                    alt="Card image cap">
+                    
 
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">ADIDAS COPA SENSE
-                                        .3 FG METEORITE - RED/FOOTWEAR WHITE/SOLAR RED</a>
-                                    <br>
-                                    <span class="card-text old-price">2,695,000₫</span>
-                                    <span class="card-text new-price"> 1,800,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-1%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 TF.jpg"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">ADIDAS COPA SENSE
-                                        .3 TF METEORITE - RED/FOOTWEAR WHITE/SOLAR RED/PRO </a>
-                                    <br>
-                                    <span class="card-text old-price">1,900,000₫</span>
-                                    <span class="card-text new-price"> 1,890,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-21%</span>
-                                <img class="card-img-top link" src="./product img/nike_tiembi_shoe.jpg"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">NIKE TIEMPO REACT
-                                        LEGEND 9 CLUB TF - WHITE/DARK SMOKE GREY/BLACK/YELLOW</a>
-                                    <br>
-                                    <span class="card-text old-price">2,895,000₫</span>
-                                    <span class="card-text new-price"> 1,940,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-1%</span>
-                                <img class="card-img-top link" src="./product img/ADIDAS X SPEE+DFLOW .png"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">ADIDAS X
-                                        SPEEDFLOW .3 TF ESCAPELIGHT - CORE BLACK/SONIC INK/SOLAR YELLOW</a>
-                                    <br>
-                                    <span class="card-text old-price">1,900,000₫</span>
-                                    <span class="card-text new-price"> 1,890,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div style="padding: 0 0; " class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-16%</span>
-                                <img class="card-img-top link"
-                                    src="./product img/boc ong dong ADIDAS X LESTO SHIN GUARDS - BLACK.jpg"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">BỌC ỐNG ĐỒNG
-                                        ADIDAS X LESTO SHIN GUARDS - BLACK</a>
-                                    <br>
-                                    <span class="card-text old-price"></span>
-                                    <span class="card-text new-price"> 320,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-29%</span>
-                                <img class="card-img-top link" src="./product img/boc ong.jpeg" alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">BỌC ỐNG ĐỒNG
-                                        ADIDAS TIRO CLUB SHIN GUARDS - BLACK/WHITE</a>
-                                    <br>
-                                    <span class="card-text old-price">380,000₫</span>
-                                    <span class="card-text new-price"> 270,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-0%</span>
-                                <img class="card-img-top link" src="./product img/quanaokamitovang.jpg"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">BỘ QUẦN ÁO BÓNG
-                                        ĐÁ KAMITO KMSH210250 TRẮNG VÀNG</a>
-                                    <br>
-                                    <span class="card-text old-price"></span>
-                                    <span class="card-text new-price"> 199,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div style="padding: 0 0;" class="pad15 ">
-                            <div style="margin-bottom: 10px !important;height: 312px;background-color:#333333!important;"
-                                class="card">
-                                <span class="ico-sale">-0%</span>
-                                <img class="card-img-top link" src="./product img/quanaokamitodo.jpg"
-                                    alt="Card image cap">
-
-                                <div style="padding: 0 1px !important;" class="card-body">
-                                    <a style="color: orange;" class="card-title product-title" href="">BỘ QUẦN ÁO BÓNG
-                                        ĐÁ KAMITO KMSH210510 ĐỎ Trắng Sọc</a>
-                                    <br>
-                                    <span class="card-text old-price"></span>
-                                    <span class="card-text new-price"> 199,000₫</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i
-                        class="fa-solid fa-chevron-left"></i></button>
-                <button style="background-color: white; color: black" class="btn btn-primary rightLst"><i
-                        class="fa-solid fa-chevron-right"></i></button>
+                <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i class="fa-solid fa-chevron-left"></i></button>
+                <button style="background-color: white; color: black" class="btn btn-primary rightLst"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </div>
         <!--NEW PRODUCT-->
