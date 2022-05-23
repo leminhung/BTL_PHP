@@ -2,12 +2,12 @@
 <html lang="en">
 
 <?php
-    include './include/head.php';
+include './include/head.php';
 ?>
 <?php
 
 session_start();
-if (isset($_SESSION['role']) && $_SESSION['role'] != 1) {
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 1) {
     header('location: /BTL_PHP');
 }
 ?>
@@ -16,13 +16,13 @@ if (isset($_SESSION['role']) && $_SESSION['role'] != 1) {
     <!-- HEADER -->
     <?php require_once "../database/config.php" ?>
     <?php
-        include './include/header.php';
+    include './include/header.php';
     ?>
     <div class="container-fluid">
         <div class="row">
             <!-- NAVIGATION -->
             <?php
-                include './include/nav.php';
+            include './include/nav.php';
             ?>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

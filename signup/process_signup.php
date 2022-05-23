@@ -29,4 +29,5 @@ $mysqli->query($sql);
 
 session_start();
 $_SESSION['username'] = $username;
+$_SESSION['name'] = $name;
 header('Location: /BTL_PHP/trangchu.php');

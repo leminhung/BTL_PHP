@@ -59,7 +59,7 @@ session_start();
             $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
             $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
             $so_san_pham = $kq_so_san_pham['COUNT(*)'];
-            $so_san_pham_tren_1_trang = 2;
+            $so_san_pham_tren_1_trang = 4;
             $so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
             $boqua = $so_san_pham_tren_1_trang * ($trang - 1);
 
