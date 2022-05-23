@@ -2,6 +2,7 @@
 require_once "../database/config.php";
 
 $username = $_POST['username'];
+$name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $password = $_POST['password'];
@@ -21,9 +22,11 @@ if ($password != $re_password) {
   exit;
 }
 
-$sql = "INSERT INTO users(username, phone, email, password) values ('$username', '$phone', '$email', '$password')";
+$hash_pass = password_hash($password, PASSWORD_BCRYPT);
+
+$sql = "INSERT INTO users(username, phone, email, password, name) values ('$username', '$phone', '$email', '$hash_pass', '$name')";
 $mysqli->query($sql);
 
 session_start();
 $_SESSION['username'] = $username;
-header('Location: /BTL_PHP');
+header('Location: /BTL_PHP/trangchu.php');

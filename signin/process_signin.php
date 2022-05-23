@@ -15,18 +15,21 @@ if (isset($_POST['signin'])) {
 function checkAuth($name, $pass, $mysqli)
 {
   if (empty($err)) {
-    $sql = "SELECT * FROM users WHERE username = '$name' and password = '$pass'";
+    $sql = "SELECT * FROM users WHERE username = '$name'";
     $result = $mysqli->query($sql) or die($mysqli->error);
 
     $number_rows = mysqli_num_rows($result);
     if ($number_rows == 1) {
       $each = mysqli_fetch_array($result);
 
-      session_start();
-      $_SESSION['username'] = $each['username'];
-      $_SESSION['role'] = $each['role'];
+      if (password_verify($pass, $each['password'])) {
+        session_start();
+        $_SESSION['username'] = $each['username'];
+        $_SESSION['role'] = $each['role'];
+        $_SESSION['name'] = $each['name'];
 
-      header('location: /BTL_PHP');
+        header('location: /BTL_PHP/trangchu.php');
+      }
     } else {
       header('location: /BTL_PHP/signin?err_match=Tài khoản hoặc mật khẩu không chính xác!');
     }

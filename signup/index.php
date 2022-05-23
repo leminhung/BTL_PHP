@@ -40,7 +40,12 @@ if (isset($_GET['err_match'])) {
                         </div>
                         <input path="username" name="username" class="form-control" placeholder="Username" type="text" required />
                     </div>
-
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i style="padding: 5px 0" class="fa fa-user"></i> </span>
+                        </div>
+                        <input path="name" name="name" class="form-control" placeholder="Your name" type="text" required />
+                    </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i style="padding: 5px 0" class="fa fa-envelope"></i> </span>
