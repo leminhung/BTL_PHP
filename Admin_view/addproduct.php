@@ -20,120 +20,9 @@
     <div class="container-fluid">
         <div class="row">
             <!-- NAVIGATION -->
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <span data-feather="home"></span>
-                                Dashboard
-                            </a>
-                        </li>
-
-                        <li class="nav-item sub">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                Orders
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./saleOrderList.php"> Danh sách đơn hàng </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li style="margin-bottom: -36px;" class="nav-item sub">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                Products
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./addproduct.php"> Thêm sản phẩm</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./productList.php"> Danh sách sản phẩm</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li style="margin-bottom: -36px;" class="nav-item sub">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                Category
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./addcategory.php"> Thêm danh mục </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./categoryList.php"> Danh sách danh mục</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li style="margin-bottom: -36px;" class="nav-item sub">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Customers
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./contactList"> Danh sách contact </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./userList"> Danh sách khách hàng</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Integrations
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Current month
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Last quarter
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Social engagement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Year-end sale
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php
+                include './include/nav.php';
+            ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
                 <?php
@@ -143,11 +32,12 @@
                     $prd_description = $_POST['prd_description'];
                     $prd_price = $_POST['prd_price'];
                     $prd_quantity = $_POST['prd_quantity'];
+                    $prd_sale = $_POST['prd_sale'];
                     $prd_avatar = $_FILES['prd_avatar']['name'];
                     $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
                     $path = './upload/';
                     $prd_sizeID = $_POST['prd_size'];
-                    $sql_insert_product = mysqli_query($mysqli, "INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar')");
+                    $sql_insert_product = mysqli_query($mysqli, "INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image,product_sale) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar','$prd_sale')");
                     move_uploaded_file($prd_avatar_tmp, $path . $prd_avatar);
 
                     echo '<script type="text/javascript">alert("Thêm sản phẩm thành công!!!");</script>';
@@ -194,7 +84,7 @@
                         </div>
                         <script>
                             $(document).ready(function() {
-                                $('#summernote').summernote();
+                                $('#summernote').summernote('code', '<text H>');
                             });
                         </script>
                         <!-- Text input-->
@@ -218,6 +108,14 @@
                             <label class="col-md-4 control-label" for="brand">QUANTITY</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
                                 <input name="prd_quantity" placeholder="Quantity" class="form-control input-md" type="number" />
+                            </div>
+                        </div>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="brand">SALE</label>
+                            <div style="width: 93.333333% !important;" class="col-md-4">
+                                <input name="prd_sale" placeholder="%" class="form-control input-md" type="number" />
                             </div>
                         </div>
                         <!-- phần thêm avatar   -->

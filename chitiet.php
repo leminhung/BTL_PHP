@@ -115,7 +115,7 @@
                     </ul>
                 </div>
             </div>
-            <div style="margin-top: 154px;" class="container">
+            <div style="margin-top: 200px;" class="container">
                 <div class="row">
                     <div class="col-4">
                         <img width="350px" heigh="350px"
@@ -173,8 +173,13 @@
                         </div>
 
                         <!--END-Position-->
-                        <!-- Footer -->
-                        <footer style="background-color: #333333 !important ;"
+                       
+
+
+
+                    </div>
+                     <!-- Footer -->
+                     <footer style="background-color: #333333 !important ;"
                             class=" text-center text-lg-start bg-light text-muted">
                             <!-- Section: Social media -->
                             <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -287,7 +292,6 @@
                             <!-- Copyright -->
                         </footer>
                         <!-- Footer -->
-                    </div>
                 </div>
             </div>
         </div>
