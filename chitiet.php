@@ -18,7 +18,7 @@
 </head>
 <?php
     require_once "./database/config.php";
-
+    session_start();
     $id = $_GET['id'];
     $sql = "SELECT * FROM products WHERE product_id = $id";
     $product_sql =$mysqli->query($sql);
@@ -34,7 +34,6 @@
                         <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="far fa-user"></i> <?php
-                                            session_start();
                                             if (isset($_SESSION['username'])) {
                                             echo $_SESSION['username'];
                                             } else {
@@ -74,7 +73,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 py-3">
+                    <div class="col-3 py-3 cart-icon">
+                        <p class="items-cart"><?php echo $_SESSION['items'] ?></p>
                         <a href="./cart.php" style="color:#fff !important;"><i style="font-size: 24px !important;"
                                 class="fas fa-shopping-cart"></i></a>
                     </div>
