@@ -2,20 +2,20 @@
 <html lang="en">
 
 <?php
-    include './include/head.php';
+include './include/head.php';
 ?>
 
 <body>
     <?php require_once "../connect.php" ?>
     <!-- HEADER -->
     <?php
-        include './include/header.php';
+    include './include/header.php';
     ?>
     <div class="container-fluid">
         <div class="row">
             <!-- NAVIGATION -->
             <?php
-                include './include/nav.php';
+            include './include/nav.php';
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -24,10 +24,8 @@
                         <div class="d-flex flex-row justify-content-between mt-4">
                             <div class="d-flex flex-row">
                                 <input type="hidden" id="page" name="page" class="form-control">
-                                <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search"
-                                    value="" style="margin-right: 5px;">
-                                <button type="submit" id="btnSearch" name="btnSearch" value="Search"
-                                    class="btn btn-primary">Seach</button>
+                                <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search" value="" style="margin-right: 5px;">
+                                <button type="submit" id="btnSearch" name="btnSearch" value="Search" class="btn btn-primary">Seach</button>
                             </div>
                             <div>
                                 <a class="btn btn-outline-primary mb-1" href="./addcategory.php" role="button">Add
@@ -43,23 +41,19 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT * FROM `categories`";
-                                    $categories = mysqli_query($connect,$sql);
-                                    mysqli_close($connect);
+                                $sql = "SELECT * FROM `categories`";
+                                $categories = mysqli_query($connect, $sql);
+                                mysqli_close($connect);
                                 ?>
-                                <?php foreach($categories as $category){ ?>
-                                <tr>
-                                    <th scope="row"><?php echo $category['category_id'] ?></th>
-                                    <td><?php echo $category['category_name'] ?></td>
-                                    <td>
-                                        <a class="btn btn-primary"
-                                            href="./category/update_category.php?id=<?php echo $category['category_id'] ?>"
-                                            role="button">Edit</a>
-                                        <a class="btn btn-danger"
-                                            href="./category/process_deletecategory.php?id=<?php echo $category['category_id'] ?>"
-                                            role="button">Delete</a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($categories as $category) { ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $category['category_id'] ?></th>
+                                        <td><?php echo $category['category_name'] ?></td>
+                                        <td>
+                                            <a class="btn btn-primary" href="./category/update_category.php?id=<?php echo $category['category_id'] ?>" role="button">Edit</a>
+                                            <a class="btn btn-danger" href="./category/process_deletecategory.php?id=<?php echo $category['category_id'] ?>" onclick="return confirm('Bạn có muốn xóa <?php echo $category['category_name'] ?>')" role="button">Delete</a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
@@ -83,29 +77,27 @@
 
     <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
     <script src="${base}/jsdashboard.js"></script>
 
 
     <script type="text/javascript">
-    // $( document ).ready(function() {
-    // 	$("#categoryId").val(${searchModel.categoryId});
-    // 	$("#paging").pagination({
-    // 		currentPage: ${CategoryWithPaging.currentPage},
-    //         items: ${CategoryWithPaging.totalItems},
-    //         itemsOnPage: 4,
-    //         cssStyle: 'light-theme',
-    //         onPageClick: function(pageNumber, event) {
-    //         	$('#page').val(pageNumber);
-    //         	$('#btnSearch').trigger('click');
-    // 		},
-    //     });
-    // });
+        // $( document ).ready(function() {
+        // 	$("#categoryId").val(${searchModel.categoryId});
+        // 	$("#paging").pagination({
+        // 		currentPage: ${CategoryWithPaging.currentPage},
+        //         items: ${CategoryWithPaging.totalItems},
+        //         itemsOnPage: 4,
+        //         cssStyle: 'light-theme',
+        //         onPageClick: function(pageNumber, event) {
+        //         	$('#page').val(pageNumber);
+        //         	$('#btnSearch').trigger('click');
+        // 		},
+        //     });
+        // });
     </script>
     <%--  <script type="text/javascript" src="${base}/js/jquery.js"></script> --%>
 </body>

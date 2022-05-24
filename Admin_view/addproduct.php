@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    include './include/head.php';
+include './include/head.php';
 ?>
 
 <body>
@@ -13,7 +13,7 @@
 
     <!-- HEADER -->
     <?php
-        include './include/header.php';
+    include './include/header.php';
     ?>
 
 
@@ -21,7 +21,7 @@
         <div class="row">
             <!-- NAVIGATION -->
             <?php
-                include './include/nav.php';
+            include './include/nav.php';
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -110,7 +110,7 @@
                                 <input name="prd_quantity" placeholder="Quantity" class="form-control input-md" type="number" />
                             </div>
                         </div>
-                        
+
                         <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="brand">SALE</label>

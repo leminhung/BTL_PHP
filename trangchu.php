@@ -14,13 +14,12 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
     <?php
-        require_once "./database/config.php" ;
+    require_once "./database/config.php";
     ?>
     <div class="container-fluid">
         <?php
@@ -65,37 +64,36 @@ session_start();
             <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
                 <div class="MultiCarousel-inner">
                     <?php
-                        $sql_product = mysqli_query($mysqli,"SELECT * FROM `products`");
+                    $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
                     ?>
 
 
                     <?php
-                                
-                    while($row_product=mysqli_fetch_array($sql_product)){
+
+                    while ($row_product = mysqli_fetch_array($sql_product)) {
                     ?>
                         <div class="item">
                             <div style="padding: 0 0;" class="pad15 ">
-                                <div style="margin-bottom: 10px !important; background-color:#333333!important;"
-                                    class="card ">
-                                    <span class="ico-sale">-<?php echo $row_product['product_sale']?>%</span>
-                                    <img class="card-img-top link" src="./Admin_view/upload/<?php echo $row_product['product_image']?>" alt="Card image cap">
+                                <div style="margin-bottom: 10px !important; background-color:#333333!important;" class="card ">
+                                    <span class="ico-sale">-<?php echo $row_product['product_sale'] ?>%</span>
+                                    <img class="card-img-top link" src="./Admin_view/upload/<?php echo $row_product['product_image'] ?>" alt="Card image cap">
 
                                     <div style="padding: 0 1px !important;" class="card-body">
-                                        <a style="color: orange;" class="card-title product-title" href="./chitiet.php?id=<?php echo $row_product['product_id'] ?>"><?php echo $row_product['product_name']?></a>
+                                        <a style="color: orange;" class="card-title product-title" href="./chitiet.php?id=<?php echo $row_product['product_id'] ?>"><?php echo $row_product['product_name'] ?></a>
                                         <br>
-                                        <span class="card-text old-price"><?php echo $row_product['product_price']?></span>
-                                        <span class="card-text new-price"><?php echo $row_product['product_price'] - ($row_product['product_sale']/100 * $row_product['product_price']) ?></span>
+                                        <span class="card-text old-price"><?php echo number_format($row_product['product_price']) ?>đ</span>
+                                        <span class="card-text new-price"><?php echo number_format($row_product['product_price'] - ($row_product['product_sale'] / 100 * $row_product['product_price'])) ?>đ</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>      
+                        </div>
 
                     <?php
-                        }
+                    }
                     ?>
 
 
-                    
+
 
                 </div>
                 <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i class="fa-solid fa-chevron-left"></i></button>
@@ -201,8 +199,7 @@ session_start();
             <div class="row">
                 <div class="col-4">
                     <div class="card" style="border: none; background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/index_banner_1.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NAM</p>
                         </div>
@@ -210,8 +207,7 @@ session_start();
                 </div>
                 <div class="col-4">
                     <div class="card" style="border: none;background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giaycotunhien.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO NỮ</p>
                         </div>
@@ -219,8 +215,7 @@ session_start();
                 </div>
                 <div class="col-4">
                     <div class="card" style="border: none;background-color: #333333;">
-                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg"
-                                alt="Card image cap"></figure>
+                        <figure> <img class="card-img-top " id="zoomIn" src="./kinh of shoe/giayfutsal.jpg" alt="Card image cap"></figure>
                         <div class="card-body p-1 color-card-body">
                             <p style="font-weight: 550; color: orange;" class="card-text">THỂ THAO CHO TRẺ EM
                             </p>
@@ -316,8 +311,7 @@ session_start();
         <div style=" max-width: 1300px;" class="container find">
             <!--END-Position-->
             <!-- Footer -->
-            <footer style="background-color: #333333 !important ;"
-                class=" text-center text-lg-start bg-light text-muted">
+            <footer style="background-color: #333333 !important ;" class=" text-center text-lg-start bg-light text-muted">
                 <!-- Section: Social media -->
                 <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                     <!-- Left -->
@@ -430,14 +424,11 @@ session_start();
             <!-- Footer -->
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <script src="./script.js"></script>
     <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>

@@ -47,8 +47,9 @@ if (isset($_SESSION['username'])) {
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit" name="signin">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
     </form>
+    <p class="text-center" style="margin-top:8px">Bạn chưa có tài khoản ? <a href="../signup">Đăng ký</a> </p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </main>
 </body>
 

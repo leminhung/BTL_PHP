@@ -30,4 +30,6 @@ $mysqli->query($sql);
 session_start();
 $_SESSION['username'] = $username;
 $_SESSION['name'] = $name;
+$_SESSION['phone'] = $phone;
+$_SESSION['email'] = $email;
 header('Location: /BTL_PHP/trangchu.php');

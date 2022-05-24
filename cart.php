@@ -10,13 +10,9 @@
     <link type="text/css" rel="stylesheet" rel="stylesheet" href="./cart.css">
     <link type="text/css" rel="stylesheet" rel="stylesheet" href="./style.css">
     <link type="text/css" rel="stylesheet" href="path_to/simplePagination.css" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -25,17 +21,17 @@
     <div style="width: 0%; margin-left: -15px;" class="container-fluid">
         <!-- Header -->
         <?php
-            session_start();
-            $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
-            $total = 0;
-            $_SESSION['items'] = 0;
-            if (is_array($cart) || is_object($cart)){
-            foreach($cart as $id => $each):
-                $total += $each['price']*$each['quantity'];
+        session_start();
+        $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+        $total = 0;
+        $_SESSION['items'] = 0;
+        if (is_array($cart) || is_object($cart)) {
+            foreach ($cart as $id => $each) :
+                $total += $each['price'] * $each['quantity'];
                 $_SESSION['items']++;
             endforeach;
-            };
-            include './includes/navbar.php';
+        };
+        include './includes/navbar.php';
         ?>
     </div>
     <div style="max-width: 1920px; margin-top: 200px;" class="container">
@@ -52,38 +48,40 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                        $fullname = "";
+
+                        if (isset($_SESSION['username']))
+                            $fullname = $_SESSION['username'];
+                        ?>
                         <div class="row border-top border-bottom cart-list">
                             <?php
-                            if (is_array($cart) || is_object($cart)){
-                            foreach($cart as $id => $each):
+                            if (is_array($cart) || is_object($cart)) {
+                                foreach ($cart as $id => $each) :
                             ?>
-                            <div class="row main align-items-center">
-                                <div class="col-2">
-                                    <img class="img-fluid" src="./Admin_view/upload/<?php echo $each['image']?> ?>">
-                                </div>
-                                <div class="col-2">
-                                    <div class="row text-muted"></div>
-                                    <div class="row"><?php echo $each['name']?></div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="row text-muted"></div>
-                                    <div class="row"><?php echo number_format($each['price']) ?>đ</div>
-                                </div>
-                                <div class="col">
-                                    <a style="cursor: pointer; font-size: 20px; "
-                                        href="./update_quantity_in_cart.php?id=<?php echo $id ?>&type=giam">-</a>
-                                    <span id="" class="border"><?php echo $each['quantity']?></span>
-                                    <a style="cursor: pointer; font-size: 20px; "
-                                        href="./update_quantity_in_cart.php?id=<?php echo $id ?>&type=tang">+</a>
-                                </div>
-                                <div class="col">
-                                    <a style="margin-top: 0px; text-align:center !important; color: #fff;" type="button"
-                                        class="btnn btn-danger btn-cart"
-                                        href="./delete_from_cart.php?id=<?php echo $id ?>">Xóa</a>
-                                </div>
-                            </div>
-                            <?php endforeach ?>
-                            <?php }?>
+                                    <div class="row main align-items-center">
+                                        <div class="col-2">
+                                            <img class="img-fluid" src="./Admin_view/upload/<?php echo $each['image'] ?> ?>">
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="row text-muted"></div>
+                                            <div class="row cus"><?php echo $each['name'] ?></div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="row text-muted"></div>
+                                            <div class="row cus_padding"><?php echo number_format($each['price']) ?>đ</div>
+                                        </div>
+                                        <div class="col">
+                                            <a style="cursor: pointer; font-size: 20px; " href="./update_quantity_in_cart.php?id=<?php echo $id ?>&type=giam">-</a>
+                                            <span id="" class="border"><?php echo $each['quantity'] ?></span>
+                                            <a style="cursor: pointer; font-size: 20px; " href="./update_quantity_in_cart.php?id=<?php echo $id ?>&type=tang">+</a>
+                                        </div>
+                                        <div class="col">
+                                            <a style="margin-top: 0px; text-align:center !important; color: #fff;" type="button" class="btnn btn-danger btn-cart" href="./delete_from_cart.php?id=<?php echo $id ?>">Xóa</a>
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
+                            <?php } ?>
                         </div>
 
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Customer
@@ -91,25 +89,21 @@
                         <div class="p-4">
                             <div class="form-group">
                                 <label for="customerPhone">Customer full name</label>
-                                <input type="tel" class="form-control" id="customerFullName" name="customerFullName"
-                                    placeholder="Full name">
+                                <input type="tel" class="form-control" id="customerFullName" name="customerFullName" placeholder="Full name" value="<?php echo $fullname ?>">
                             </div>
                             <div class="form-group">
                                 <label for="customerEmail">Email address</label>
-                                <input type="email" class="form-control" id="customerEmail" name="customerEmail"
-                                    placeholder="Enter email">
+                                <input type="email" class="form-control" id="customerEmail" name="customerEmail" placeholder="Enter email" value="<?php echo $_SESSION['email'] ?>">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                     anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="customerPhone">Phone</label>
-                                <input type="tel" class="form-control" id="customerPhone" name="customerPhone"
-                                    placeholder="Phone">
+                                <input type="tel" class="form-control" id="customerPhone" name="customerPhone" placeholder="Phone" value="<?php echo $_SESSION['phone'] ?>">
                             </div>
                             <div class="form-group">
                                 <label for="customerAddress">Address</label>
-                                <input type="text" class="form-control" id="customerAddress" name="customerAddress"
-                                    placeholder="Address">
+                                <input type="text" class="form-control" id="customerAddress" name="customerAddress" placeholder="Address">
                             </div>
                         </div>
                         <div class="back-to-shop">
@@ -254,8 +248,7 @@
 
 <jsp:include page="/WEB-INF/view/khachhang/layout/js.jsp"></jsp:include>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="path_to/jquery.js"></script>
 
 
