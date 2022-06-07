@@ -19,7 +19,11 @@ session_start();
 
 <body>
     <?php
-    require_once "./database/config.php";
+    $search = "";
+    if (isset($_GET['search'])) {
+        $search = strtoupper($_GET['search']);
+        header("location:./index.php?search=$search");
+    }
     ?>
     <div class="container-fluid">
         <?php
