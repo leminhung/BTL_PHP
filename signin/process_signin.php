@@ -29,6 +29,7 @@ function checkAuth($name, $pass, $mysqli)
         $_SESSION['name'] = $each['name'];
         $_SESSION['phone'] = $each['phone'];
         $_SESSION['email'] = $each['email'];
+        $_SESSION['user_id'] = $each['user_id'];
         header('location: /BTL_PHP/trangchu.php');
       }
     } else {

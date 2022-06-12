@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
     <title>Phương Nam Sport</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./chitiet.css">
 </head>
 <?php
@@ -29,10 +31,11 @@ $product = mysqli_fetch_array($product_sql);
             <div class="row header">
                 <div class="row head  ">
                     <div class="col-12 nav-item dropdown nav-custom">
-                        <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class=" col-2 nav-link dropdown-toggle nav-custom" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="far fa-user"></i> <?php
-                                                        if (isset($_SESSION['username'])) {
-                                                            echo $_SESSION['username'];
+                                                        if (isset($_SESSION['name'])) {
+                                                            echo $_SESSION['name'];
                                                         } else {
                                                             echo 'Tài khoản';
                                                         }
@@ -57,26 +60,27 @@ $product = mysqli_fetch_array($product_sql);
                 </div>
                 <?php
                 $items = 0;
-
                 if (isset($_SESSION['items']))
                     $items = $_SESSION['items'];
                 ?>
-
                 <div class="row col-12 logo-search-cart">
                     <div style="justify-content: end !important;" class="col-3 logo">
                         <img width="20%" src="./image/Free_Sample_By_Wix__1_-removebg-preview.png" alt="">
                     </div>
                     <div class="col-6">
                         <div class="input-group mb-3 mt-3">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                                <button class="btn btn-outline-secondary" type="button"><i
+                                        class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="col-3 py-3 cart-icon">
                         <p class="items-cart"><?php echo $items ?></p>
-                        <a href="./cart.php" style="color:#fff !important;"><i style="font-size: 24px !important;" class="fas fa-shopping-cart"></i></a>
+                        <a href="./cart.php" style="color:#fff !important;"><i style="font-size: 24px !important;"
+                                class="fas fa-shopping-cart"></i></a>
                     </div>
                 </div>
 
@@ -118,23 +122,24 @@ $product = mysqli_fetch_array($product_sql);
             <div style="margin-top: 200px;" class="container">
                 <div class="row">
                     <div class="col-4">
-                        <img width="350px" heigh="350px" src="./Admin_view/upload/<?php echo $product['product_image'] ?>" alt="">
+                        <img width="350px" heigh="350px"
+                            src="./Admin_view/upload/<?php echo $product['product_image'] ?>" alt="">
                     </div>
 
                     <div class="col-8">
                         <p class="name-product"><?php echo $product['product_name'] ?></p>
                         <?php if ($product['product_sale'] > 0) { ?>
-                            <span class="card-text old-price"><?php echo number_format($product['product_price']) ?>đ</span>
+                        <span class="card-text old-price"><?php echo number_format($product['product_price']) ?>đ</span>
                         <?php } else { ?>
-                            <span class="card-text old-price"></span>
+                        <span class="card-text old-price"></span>
                         <?php } ?>
 
                         <?php if ($product['product_sale'] > 0) { ?>
-                            <span style="margin-left: 20px; font-size: 30px" class="card-text new-price">
-                                <?php echo number_format($product['product_price'] - $product['product_price'] * $product['product_sale'] / 100)  ?>
-                                đ</span>
+                        <span style="margin-left: 20px; font-size: 30px" class="card-text new-price">
+                            <?php echo number_format($product['product_price'] - $product['product_price'] * $product['product_sale'] / 100)  ?>
+                            đ</span>
                         <?php } else { ?>
-                            <span class="card-text new-price"> <?php echo $product['product_price'] ?>đ</span>
+                        <span class="card-text new-price"> <?php echo $product['product_price'] ?>đ</span>
                         <?php } ?>
                         <p style="font-size: 18px; color: #fff;margin-bottom:0;font-weight: 600;">Mô tả:</p>
                         <p class="product-desc"><?php echo $product['product_description'] ?></p>
@@ -142,27 +147,30 @@ $product = mysqli_fetch_array($product_sql);
                         <!-- size button -->
                         <?php
                         $name =  $product['product_name'];
-                        $sql = "SELECT * FROM products INNER JOIN sizes ON products.size_id = sizes.size_id
-                            WHERE product_name = N'$name' ORDER BY sizes.size_id ASC";
+                        $sql = "SELECT size_name FROM products
+                        WHERE product_name = N'$name' ORDER BY size_name ASC";
                         $ketqua = $mysqli->query($sql);
                         ?>
                         <div class=" shoe size">
                             <?php while ($row = mysqli_fetch_array($ketqua)) { ?>
-                                <div class="btn-group " role="group" aria-label="Third group">
-                                    <button type="button" class="btn btn-info shoe-size-btn" name="size"><?php echo $row['size_name'] ?></button>
-                                </div>
+                            <div class="btn-group " role="group" aria-label="Third group">
+                                <button type="button" class="btn btn-info shoe-size-btn"
+                                    name="size"><?php echo $row['size_name'] ?></button>
+                            </div>
                             <?php } ?>
                             <!-- end size button -->
                             <div style="margin-top: 15px;">
                                 <button type="button" class="btn btn-outline-warning">Mua hàng</button>
                                 <?php if (!isset($_SESSION['username'])) { ?>
-                                    <button type="button" class="btn btn-outline-warning"><a class="add-product" href="./signin">Thêm vào
-                                            giỏ
-                                            hàng</a></button>
+                                <button type="button" class="btn btn-outline-warning"><a class="add-product"
+                                        href="./signin">Thêm vào
+                                        giỏ
+                                        hàng</a></button>
                                 <?php } else { ?>
-                                    <button type="button" class="btn btn-outline-warning"><a class="add-product" href="./add_to_cart.php?product_id=<?php echo $product['product_id'] ?>">Thêm
-                                            vào giỏ
-                                            hàng</a></button>
+                                <button type="button" class="btn btn-outline-warning"><a class="add-product"
+                                        href="./add_to_cart.php?product_id=<?php echo $product['product_id'] ?>">Thêm
+                                        vào giỏ
+                                        hàng</a></button>
                                 <?php } ?>
                             </div>
 
@@ -175,7 +183,8 @@ $product = mysqli_fetch_array($product_sql);
 
                     </div>
                     <!-- Footer -->
-                    <footer style="background-color: #333333 !important ;" class=" text-center text-lg-start bg-light text-muted">
+                    <footer style="background-color: #333333 !important ;"
+                        class=" text-center text-lg-start bg-light text-muted">
                         <!-- Section: Social media -->
                         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
                             <!-- Left -->
@@ -290,11 +299,14 @@ $product = mysqli_fetch_array($product_sql);
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
         </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
         </script>
         <script src="./script.js"></script>
         <script src="./OwlCarousel2-2.3.4/src/js/owl.carousel.js"></script>
