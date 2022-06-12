@@ -55,8 +55,8 @@
                         <?php
                         $fullname = "";
 
-                        if (isset($_SESSION['username']))
-                            $fullname = $_SESSION['username'];
+                        if (isset($_SESSION['name']))
+                            $fullname = $_SESSION['name'];
                         ?>
                         <div class="row border-top border-bottom cart-list">
                             <?php
