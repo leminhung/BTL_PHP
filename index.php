@@ -8,11 +8,11 @@ require_once './database/config.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương Nam Sport</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
-    <title>Phương Nam Sport</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -50,12 +50,14 @@ require_once './database/config.php';
                 $search = strtoupper($_GET['search']);
             }
             //phan trang
-            $sql_so_san_pham = "SELECT COUNT(*) FROM products
-                WHERE UPPER(product_name) LIKE '%$search%'";
-            if (isset($_GET['categoryId'])) {
+            $sql_so_san_pham = "";
+            if (!empty($_GET['categoryId'])) {
                 $category_id = $_GET['categoryId'];
                 $sql_so_san_pham = "SELECT COUNT(*) FROM products
                     WHERE (category_id = $category_id)";
+            }else {
+                $sql_so_san_pham = "SELECT COUNT(*) FROM products
+                WHERE UPPER(product_name) LIKE '%$search%'";
             }
             $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
             $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);

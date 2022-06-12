@@ -6,6 +6,7 @@ $phone_receiver = $_POST['phone_receiver'];
 $address_receiver = $_POST['address_receiver'];
 session_start();
 $cart = $_SESSION['cart'];
+//luu vao order
 $username = $_SESSION['username'];
 $sql_user = "SELECT * FROM users WHERE username = '$username'";
 $mang_user = $mysqli->query($sql_user);
@@ -23,6 +24,7 @@ $sql = "INSERT INTO orders(user_id,name_receiver,phone_receiver,address_receiver
 VALUES ('$user_id','$name_receiver','$phone_receiver','$address_receiver','$total_price','$status')";
 $mysqli->query($sql);
 
+//luu vao order detail
 $sql = "SELECT MAX(order_id) FROM orders WHERE user_id = '$user_id'";
 $result = $mysqli->query($sql);
 $order_id = mysqli_fetch_array($result)['MAX(order_id)'];
