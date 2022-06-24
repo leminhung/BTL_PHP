@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 06, 2022 lúc 05:49 PM
+-- Thời gian đã tạo: Th6 24, 2022 lúc 04:06 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 7.4.27
 
@@ -32,6 +32,15 @@ CREATE TABLE `categories` (
   `category_name` varchar(30) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_name`) VALUES
+(1, 'QUẦN THỂ THAO'),
+(2, 'ÁO THỂ THAO'),
+(3, 'GIÀY THỂ THAO');
+
 -- --------------------------------------------------------
 
 --
@@ -54,10 +63,30 @@ CREATE TABLE `comments` (
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `phone` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `name_receiver` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `phone_receiver` varchar(15) COLLATE utf8mb4_bin NOT NULL,
+  `address_receiver` text COLLATE utf8mb4_bin NOT NULL,
   `total` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `name_receiver`, `phone_receiver`, `address_receiver`, `total`, `created_at`, `status`) VALUES
+(1, 10, 'duong', '093747134', 'bac giang', 3123000, '2022-05-30 18:01:58', 0),
+(2, 10, 'duong', '093747134', 'ha noi', 423000, '2022-05-30 18:03:17', 0),
+(3, 12, 'duong2', '09476235', 'son dong', 1269000, '2022-05-31 02:43:47', 0),
+(4, 12, 'duong2', '09476235', 'son dong', 3000000, '2022-05-31 02:45:25', 0),
+(5, 12, 'duong2', '09476235', 'ha noi', 300000, '2022-05-31 02:45:53', 0),
+(6, 14, 'hung', '09344877253', 'thanh hoa', 3600000, '2022-05-31 09:46:28', 0),
+(7, 18, 'nam', '0592845723', 'phhu yen', 1146000, '2022-06-11 16:10:16', 0),
+(8, 18, 'nam', '0592845723', 'Nam định', 1500000, '2022-06-11 16:52:11', 0),
+(9, 19, 'duong', '0295827475', 'ha noi', 423000, '2022-06-12 04:16:52', 0),
+(10, 19, 'duong', '0295827475', 'ha noi', 1500000, '2022-06-12 09:02:43', 0),
+(11, 19, 'duong', '0295827475', 'quang ninh', 123000, '2022-06-12 09:03:06', 0);
 
 -- --------------------------------------------------------
 
@@ -66,12 +95,33 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_detail` (
-  `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` double NOT NULL
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Đang đổ dữ liệu cho bảng `order_detail`
+--
+
+INSERT INTO `order_detail` (`order_id`, `product_id`, `quantity`) VALUES
+(1, 12, 1),
+(1, 14, 2),
+(2, 12, 1),
+(2, 13, 1),
+(3, 12, 3),
+(3, 13, 3),
+(4, 14, 2),
+(5, 13, 1),
+(6, 13, 2),
+(6, 14, 2),
+(7, 12, 2),
+(7, 13, 3),
+(8, 14, 1),
+(9, 12, 1),
+(9, 13, 1),
+(10, 14, 1),
+(11, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -82,24 +132,23 @@ CREATE TABLE `order_detail` (
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `product_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `product_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `product_image` text COLLATE utf8mb4_bin NOT NULL,
+  `product_sale` int(11) NOT NULL,
   `product_price` double NOT NULL,
   `product_quantity` int(11) NOT NULL,
-  `product_description` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL
+  `product_description` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+  `size_name` char(5) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- --------------------------------------------------------
-
 --
--- Cấu trúc bảng cho bảng `sizes`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
-CREATE TABLE `sizes` (
-  `size_id` int(11) NOT NULL,
-  `size_name` varchar(3) COLLATE utf8mb4_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+INSERT INTO `products` (`product_id`, `category_id`, `product_name`, `product_image`, `product_sale`, `product_price`, `product_quantity`, `product_description`, `size_name`) VALUES
+(12, 1, 'Quan', 'ADICOLORCLASSICSTRACETEE.jpg', 0, 123000, 5, '', 'S'),
+(13, 2, 'Ao thun adidas', 'FUTUREICONCAMOINFILLTEE.jpg', 0, 300000, 5, 'frgewgsg', 'M'),
+(14, 3, 'Giày adidas', '', 0, 1500000, 3, 'sàdfgdfhgjfg', 'M');
 
 -- --------------------------------------------------------
 
@@ -110,11 +159,23 @@ CREATE TABLE `sizes` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `name` varchar(35) COLLATE utf8mb4_bin NOT NULL,
-  `user_phone` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `phone` varchar(10) COLLATE utf8mb4_bin NOT NULL,
   `username` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(26) COLLATE utf8mb4_bin NOT NULL,
-  `gender` text COLLATE utf8mb4_bin NOT NULL
+  `email` varchar(35) COLLATE utf8mb4_bin NOT NULL,
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `phone`, `username`, `password`, `email`, `role`) VALUES
+(10, 'dương', '093747134', 'duong', '$2y$10$Fe3jd1WXr8ANpBWJ3ov', 'duong123@gmail.com', 0),
+(12, 'duong', '09476235', 'duong2', '$2y$10$tj6rWQN4ENOSLTAVKUK', 'duong1234@gmail.com', 0),
+(14, 'hung', '094726454', 'hung', '$2y$10$QKE6lq2bb1YeUCNTw7f', 'hung@gmail.com', 0),
+(18, 'nam', '0592845723', 'nam1', '$2y$10$swiiH4ZCrnFZYKjoOcS', 'nam1@gmail.com', 0),
+(19, 'duong', '0295827475', 'nam2', '$2y$10$27RCx0whqBKoc0ZLo2m', 'nam@gmail.com', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -145,7 +206,7 @@ ALTER TABLE `orders`
 -- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`order_id`,`product_id`),
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -154,14 +215,7 @@ ALTER TABLE `order_detail`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `size_id` (`size_id`);
-
---
--- Chỉ mục cho bảng `sizes`
---
-ALTER TABLE `sizes`
-  ADD PRIMARY KEY (`size_id`);
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -177,7 +231,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `comments`
@@ -189,31 +243,19 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `order_detail`
---
-ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `sizes`
---
-ALTER TABLE `sizes`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -243,8 +285,7 @@ ALTER TABLE `order_detail`
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

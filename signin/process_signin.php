@@ -12,16 +12,17 @@ if (isset($_POST['signin'])) {
   }
 }
 
-function checkAuth($name, $pass, $mysqli)
+function checkAuth($username, $pass, $mysqli)
 {
   if (empty($err)) {
-    $sql = "SELECT * FROM users WHERE username = '$name'";
+    $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = $mysqli->query($sql) or die($mysqli->error);
 
     $number_rows = mysqli_num_rows($result);
     if ($number_rows == 1) {
       $each = mysqli_fetch_array($result);
 
+      echo '<script type="text/javascript">alert("' . password_verify($pass, $each['password']) . '");</script>';
       if (password_verify($pass, $each['password'])) {
         session_start();
         $_SESSION['username'] = $each['username'];
@@ -29,6 +30,7 @@ function checkAuth($name, $pass, $mysqli)
         $_SESSION['name'] = $each['name'];
         $_SESSION['phone'] = $each['phone'];
         $_SESSION['email'] = $each['email'];
+        $_SESSION['user_id'] = $each['user_id'];
         header('location: /PhuongNamSport/trangchu.php');
       }
     } else {

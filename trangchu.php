@@ -20,27 +20,17 @@ session_start();
 </head>
 
 <body>
-
   <?php
-  if (isset($_GET['success']) && $_GET['success']) {
-    echo '<script type="text/javascript">alert("Sửa thông tin người dùng thành công!!!");</script>';
-  }
-
-  if (isset($_GET['success_del']) && $_GET['success_del']) {
-    echo '<script type="text/javascript">alert("Xóa người dùng thành công!!!");</script>';
-  }
-  ?>
-  <?php
-  $search = "";
-  if (isset($_GET['search'])) {
-    $search = strtoupper($_GET['search']);
-    header("location:./index.php?search=$search");
-  }
-  ?>
+    $search = "";
+    if (isset($_GET['search'])) {
+        $search = strtoupper($_GET['search']);
+        header("location:./index.php?search=$search");
+    }
+    ?>
   <div class="container-fluid">
     <?php
-    include './includes/navbar.php';
-    ?>
+        include './includes/navbar.php';
+        ?>
     <!--slide-->
     <div style="margin-top: 154px;" class="row slide">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -80,11 +70,11 @@ session_start();
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
         <div class="MultiCarousel-inner">
           <?php
-          $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
-          ?>
+                    $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+                    ?>
           <?php
-          while ($row_product = mysqli_fetch_array($sql_product)) {
-          ?>
+                    while ($row_product = mysqli_fetch_array($sql_product)) {
+                    ?>
           <div class="item">
             <div style="padding: 0 0;" class="pad15 ">
               <div style="margin-bottom: 10px !important; background-color:#333333!important;" class="card ">
@@ -105,7 +95,7 @@ session_start();
           </div>
 
           <?php
-          } ?>
+                    } ?>
         </div>
         <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i
             class="fa-solid fa-chevron-left"></i></button>
@@ -125,7 +115,7 @@ session_start();
             <img class="card-img-top link" src="./product img/aodas1.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">ÁO TANK TOP TẬP THỂ THAO</a>
+              <a class="card-title product-title" href="./chitiet.php">ÁO TANK TOP TẬP THỂ THAO</a>
               <div class="price">
                 <p class="card-text old-price">1,200,000₫</p>
                 <p class="card-text new-price"> 1,000,000₫</p>
@@ -139,7 +129,7 @@ session_start();
             <img class="card-img-top link" src="./product img/giaydas1.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">GIÀY TRAINER DROPSET</a>
+              <a class="card-title product-title" href="./chitiet.php">GIÀY TRAINER DROPSET</a>
               <div class="price">
                 <p class="card-text old-price">3,500,000₫</p>
                 <p class="card-text new-price"> 3,000,000₫</p>
@@ -153,7 +143,7 @@ session_start();
             <img class="card-img-top link" src="./product img/aodas2.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">ÁO KHOÁC GIÓ ADIDAS</a>
+              <a class="card-title product-title" href="./chitiet.php">ÁO KHOÁC GIÓ ADIDAS</a>
               <div class="price">
                 <p class="card-text old-price">1,500,000₫</p>
                 <p class="card-text new-price"> 1,200,000₫</p>
@@ -166,7 +156,7 @@ session_start();
             <img class="card-img-top link" src="./product img/quan1.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">QUẦN TẬP JOGA XANH RÊU</a>
+              <a class="card-title product-title" href="./chitiet.php">QUẦN TẬP JOGA XANH RÊU</a>
               <div class="price">
                 <p class="card-text old-price"></p>
                 <p class="card-text new-price"> 1,800,000₫</p>
@@ -180,7 +170,7 @@ session_start();
             <img class="card-img-top link" src="./product img/giaydas2.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">GIÀY ALPHATORSION 2.0</a>
+              <a class="card-title product-title" href="./chitiet.php">GIÀY ALPHATORSION 2.0</a>
               <div class="price">
                 <p class="card-text old-price">2,850,000₫</p>
                 <p class="card-text new-price"> 1,425,000₫</p>
@@ -194,7 +184,7 @@ session_start();
             <img class="card-img-top link" src="./product img/quan2.webp" alt="Card image cap">
             <!-- <hr class="gach-ngang"> -->
             <div style="padding: 4px 1px !important;" class="card-body">
-              <a class="card-title product-title" href="./chitiet.html">QUẦN SHORT 4KRFT XANH RÊU</a>
+              <a class="card-title product-title" href="./chitiet.php">QUẦN SHORT 4KRFT XANH RÊU</a>
               <div class="price">
                 <p class="card-text old-price">1,000,000₫</p>
                 <p class="card-text new-price"> 800,000₫</p>
@@ -297,28 +287,28 @@ session_start();
         <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3 best">
           <div class="best_item">
             <img height="150px !important" src="./product img/best1.webp">
-            <a class="best_title product-title" href="./chitiet.html">Response Super 2.0 Shoes</a>
+            <a class="best_title product-title" href="./chitiet.php">Response Super 2.0 Shoes</a>
             <p class="price_bestitem">2,300,000đ</p>
           </div>
         </div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
           <div class="best_item">
             <img height="150px !important" src="./product img/best2.webp">
-            <a class="best_title product-title" href="./chitiet.html">Ultraboost 22 Shoes</a>
+            <a class="best_title product-title" href="./chitiet.php">Ultraboost 22 Shoes</a>
             <p class="price_bestitem">5,200,000đ</p>
           </div>
         </div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
           <div class="best_item">
             <img height="150px !important" src="./product img/best3.webp">
-            <a class="best_title product-title" href="./chitiet.html">Galaxy 5 Shoes</a>
+            <a class="best_title product-title" href="./chitiet.php">Galaxy 5 Shoes</a>
             <p class="price_bestitem">1,500,000đ</p>
           </div>
         </div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
           <div class="best_item">
             <img height="150px !important" src="./product img/best4.webp">
-            <a class="best_title product-title" href="./chitiet.html">Fluidflow 2.0 Shoes</a>
+            <a class="best_title product-title" href="./chitiet.php">Fluidflow 2.0 Shoes</a>
             <p class="price_bestitem">2,100,000đ</p>
           </div>
         </div>

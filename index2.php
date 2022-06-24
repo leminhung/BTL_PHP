@@ -138,7 +138,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/nike ball.jpeg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE FOOTBALL FLIGHT PREMIER
+                                <a class="card-title product-title" href="./chitiet.php">NIKE FOOTBALL FLIGHT PREMIER
                                     LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
                                 <br>
                                 <span class="card-text old-price">4,495,000₫</span>
@@ -152,7 +152,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS X SPEEDFLOW .1 TF
+                                <a class="card-title product-title" href="./chitiet.php">ADIDAS X SPEEDFLOW .1 TF
                                     METEORITE - RED/CORE BLACK/SOLAR RED</a>
                                 <br>
                                 <span class="card-text old-price">3,600,000₫</span>
@@ -166,7 +166,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 FG .jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS COPA SENSE .3 FG
+                                <a class="card-title product-title" href="./chitiet.php">ADIDAS COPA SENSE .3 FG
                                     METEORITE - RED/FOOTWEAR WHITE/SOLAR RED</a>
                                 <br>
                                 <span class="card-text old-price">2,695,000₫</span>
@@ -180,7 +180,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/NIKE MERCURIAL ZOOM.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE FOOTBALL FLIGHT PREMIER
+                                <a class="card-title product-title" href="./chitiet.php">NIKE FOOTBALL FLIGHT PREMIER
                                     LEAGUE - WHITE/HYPER CRIMSON/BLACK</a>
                                 <br>
                                 <span class="card-text old-price">3,600,000₫</span>
@@ -194,7 +194,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/ADIDAS COPA SENSE .3 TF.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS COPA SENSE .3 TF
+                                <a class="card-title product-title" href="./chitiet.php">ADIDAS COPA SENSE .3 TF
                                     METEORITE - RED/FOOTWEAR WHITE/SOLAR RED/PRO </a>
                                 <br>
                                 <span class="card-text old-price">1,900,000₫</span>
@@ -208,7 +208,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/nike_tiembi_shoe.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">NIKE TIEMPO REACT LEGEND 9
+                                <a class="card-title product-title" href="./chitiet.php">NIKE TIEMPO REACT LEGEND 9
                                     CLUB TF - WHITE/DARK SMOKE GREY/BLACK/YELLOW</a>
                                 <br>
                                 <span class="card-text old-price">2,895,000₫</span>
@@ -222,7 +222,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/ADIDAS X SPEEDFLOW .png" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">ADIDAS X SPEEDFLOW .3 TF
+                                <a class="card-title product-title" href="./chitiet.php">ADIDAS X SPEEDFLOW .3 TF
                                     ESCAPELIGHT - CORE BLACK/SONIC INK/SOLAR YELLOW</a>
                                 <br>
                                 <span class="card-text old-price">1,900,000₫</span>
@@ -236,7 +236,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/boc ong dong ADIDAS X LESTO SHIN GUARDS - BLACK.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">BỌC ỐNG ĐỒNG ADIDAS X LESTO
+                                <a class="card-title product-title" href="./chitiet.php">BỌC ỐNG ĐỒNG ADIDAS X LESTO
                                     SHIN GUARDS - BLACK</a>
                                 <br>
                                 <span class="card-text old-price"></span>
@@ -250,7 +250,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/boc ong.jpeg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">BỌC ỐNG ĐỒNG ADIDAS TIRO CLUB
+                                <a class="card-title product-title" href="./chitiet.php">BỌC ỐNG ĐỒNG ADIDAS TIRO CLUB
                                     SHIN GUARDS - BLACK/WHITE</a>
                                 <br>
                                 <span class="card-text old-price">380,000₫</span>
@@ -264,7 +264,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/quanaokamitovang.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO
+                                <a class="card-title product-title" href="./chitiet.php">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO
                                     KMSH210250 TRẮNG VÀNG</a>
                                 <br>
                                 <span class="card-text old-price"></span>
@@ -278,7 +278,7 @@ session_start();
                             <img class="card-img-top link" src="./product img/quanaokamitodo.jpg" alt="Card image cap">
                             <hr class="gach-ngang">
                             <div style="padding: 0 1px !important;" class="card-body">
-                                <a class="card-title product-title" href="./chitiet.html">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO
+                                <a class="card-title product-title" href="./chitiet.php">BỘ QUẦN ÁO BÓNG ĐÁ KAMITO
                                     KMSH210510 ĐỎ</a>
                                 <br>
                                 <span class="card-text old-price"></span>
