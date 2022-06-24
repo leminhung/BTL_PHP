@@ -44,7 +44,7 @@
         <?php
         if (isset($_SESSION['name'])) {
           echo '<div class="dropdown-divider margin: 3px 0;"></div>';
-          echo '<a class="dropdown-item dropdown-item-custom" href="./user_info">Thông tin tài khoản</a>';
+          echo '<a class="dropdown-item dropdown-item-custom" href="./view_user">Thông tin tài khoản</a>';
         }
         ?>
         <?php
