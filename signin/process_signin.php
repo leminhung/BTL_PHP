@@ -22,7 +22,6 @@ function checkAuth($username, $pass, $mysqli)
     if ($number_rows == 1) {
       $each = mysqli_fetch_array($result);
 
-      echo '<script type="text/javascript">alert("' . password_verify($pass, $each['password']) . '");</script>';
       if (password_verify($pass, $each['password'])) {
         session_start();
         $_SESSION['username'] = $each['username'];
