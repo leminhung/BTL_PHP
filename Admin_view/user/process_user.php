@@ -9,12 +9,17 @@ if (isset($_POST['submit'])) {
   $role = $_POST['role'];
   $name = $_POST['name'];
 
-  $sql_check = "SELECT count(*) FROM users where email='$email'";
+  $sql_check = "SELECT count(*) FROM users where email='$email' and user_id <> '$user_id'";
   $result = $mysqli->query($sql_check);
   $number_rows = mysqli_fetch_array($result)['count(*)'];
 
-  if ($number_rows == 2) {
-    header("location: ./update_user.php?id=$user_id&err_exist=Email đã tồn tại rùi");
+  if ($number_rows == 1 && isset($_POST['user_id'])) {
+    header("location: ./update_user.php?id=$user_id&err_exist=Tài khoản đã tồn tại rùi");
+    exit;
+  }
+
+  if ($number_rows == 1 && isset($_POST['user_idv'])) {
+    header("location: /PhuongNamSport/view_user/index.php?id=$user_id&err_exist=Tài khoản đã tồn tại rùi");
     exit;
   }
 

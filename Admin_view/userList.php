@@ -72,8 +72,8 @@ include './include/head.php';
                 ?>
                 <tr>
                   <td><?php echo $i++; ?></td>
-                  <td><a href="#"><img width="60" src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                        class="avatar" alt="Avatar" />
+                  <td><a href="user/update_user.php?id=<?php echo $row_user['user_id'] ?>"><img width="60"
+                        src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar" alt="Avatar" />
                       <?php echo $row_user['username'] ?></a>
                   </td>
                   <td><?php echo $row_user['email'] ?> </td>
