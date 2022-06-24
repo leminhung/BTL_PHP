@@ -20,17 +20,27 @@ session_start();
 </head>
 
 <body>
+
   <?php
-    $search = "";
-    if (isset($_GET['search'])) {
-        $search = strtoupper($_GET['search']);
-        header("location:./index.php?search=$search");
-    }
-    ?>
+  if (isset($_GET['success']) && $_GET['success']) {
+    echo '<script type="text/javascript">alert("Sửa thông tin người dùng thành công!!!");</script>';
+  }
+
+  if (isset($_GET['success_del']) && $_GET['success_del']) {
+    echo '<script type="text/javascript">alert("Xóa người dùng thành công!!!");</script>';
+  }
+  ?>
+  <?php
+  $search = "";
+  if (isset($_GET['search'])) {
+    $search = strtoupper($_GET['search']);
+    header("location:./index.php?search=$search");
+  }
+  ?>
   <div class="container-fluid">
     <?php
-        include './includes/navbar.php';
-        ?>
+    include './includes/navbar.php';
+    ?>
     <!--slide-->
     <div style="margin-top: 154px;" class="row slide">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -70,11 +80,11 @@ session_start();
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
         <div class="MultiCarousel-inner">
           <?php
-                    $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
-                    ?>
+          $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+          ?>
           <?php
-                    while ($row_product = mysqli_fetch_array($sql_product)) {
-                    ?>
+          while ($row_product = mysqli_fetch_array($sql_product)) {
+          ?>
           <div class="item">
             <div style="padding: 0 0;" class="pad15 ">
               <div style="margin-bottom: 10px !important; background-color:#333333!important;" class="card ">
@@ -95,7 +105,7 @@ session_start();
           </div>
 
           <?php
-                    } ?>
+          } ?>
         </div>
         <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i
             class="fa-solid fa-chevron-left"></i></button>

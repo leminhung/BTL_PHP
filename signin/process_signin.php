@@ -29,10 +29,10 @@ function checkAuth($name, $pass, $mysqli)
         $_SESSION['name'] = $each['name'];
         $_SESSION['phone'] = $each['phone'];
         $_SESSION['email'] = $each['email'];
-        header('location: /BTL_PHP/trangchu.php');
+        header('location: /PhuongNamSport/trangchu.php');
       }
     } else {
-      header('location: /BTL_PHP/signin?err_match=Tài khoản hoặc mật khẩu không chính xác!');
+      header('location: /PhuongNamSport/signin?err_match=Tài khoản hoặc mật khẩu không chính xác!');
     }
   }
 }

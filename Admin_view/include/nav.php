@@ -15,7 +15,7 @@
         </a>
         <ul class="sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view/saleOrderList.php"> Danh sách đơn hàng </a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view/saleOrderList.php"> Danh sách đơn hàng </a>
           </li>
 
         </ul>
@@ -28,10 +28,10 @@
         </a>
         <ul class="sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view/addproduct.php"> Thêm sản phẩm</a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view/addproduct.php"> Thêm sản phẩm</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view/productList.php"> Danh sách sản phẩm</a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view/productList.php"> Danh sách sản phẩm</a>
           </li>
         </ul>
       </li>
@@ -43,10 +43,10 @@
         </a>
         <ul class="sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view/addcategory.php"> Thêm danh mục </a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view/addcategory.php"> Thêm danh mục </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view//categoryList.php"> Danh sách danh mục</a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view//categoryList.php"> Danh sách danh mục</a>
           </li>
         </ul>
       </li>
@@ -60,7 +60,7 @@
             <a class="nav-link" href="./contactList"> Danh sách contact </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/BTL_PHP/Admin_view/userlist.php"> Danh sách khách hàng</a>
+            <a class="nav-link" href="/PhuongNamSport/Admin_view/userlist.php"> Danh sách khách hàng</a>
           </li>
         </ul>
       </li>

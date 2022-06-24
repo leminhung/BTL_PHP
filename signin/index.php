@@ -22,7 +22,7 @@ if (isset($_GET['err_match'])) {
 
 session_start();
 if (isset($_SESSION['username'])) {
-  header('location: /BTL_PHP/trangchu.php');
+  header('location: /PhuongNamSport/trangchu.php');
 }
 ?>
 

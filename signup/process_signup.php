@@ -13,12 +13,12 @@ $result = $mysqli->query($sql);
 $number_rows = mysqli_fetch_array($result)['count(*)'];
 
 if ($number_rows == 1) {
-  header("location: /BTL_PHP/signup/?err_exist=Tài khoản đã tồn tại rùi");
+  header("location: /PhuongNamSport/signup/?err_exist=Tài khoản đã tồn tại rùi");
   exit;
 }
 
 if ($password != $re_password) {
-  header("location: /BTL_PHP/signup/?err_match=Mật khẩu nhập lại không đúng");
+  header("location: /PhuongNamSport/signup/?err_match=Mật khẩu nhập lại không đúng");
   exit;
 }
 
@@ -32,4 +32,4 @@ $_SESSION['username'] = $username;
 $_SESSION['name'] = $name;
 $_SESSION['phone'] = $phone;
 $_SESSION['email'] = $email;
-header('Location: /BTL_PHP/trangchu.php');
+header('Location: /PhuongNamSport/trangchu.php');

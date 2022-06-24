@@ -12,16 +12,23 @@ include './include/head.php';
   <?php
   include './include/header.php';
   ?>
-
   <div class="container-fluid">
     <div class="row">
       <?php
       include './include/nav.php';
       ?>
+      <?php
+      if (isset($_GET['success']) && $_GET['success']) {
+        echo '<script type="text/javascript">alert("Sửa thông tin người dùng thành công!!!");</script>';
+      }
+
+      if (isset($_GET['success_del']) && $_GET['success_del']) {
+        echo '<script type="text/javascript">alert("Xóa người dùng thành công!!!");</script>';
+      }
+      ?>
+
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
         <div class="container-fluid">
-
           <form class="form-inline" action="" method="get" modelAttribute="products">
             <div class="d-flex flex-row justify-content-between mt-4">
               <div class="d-flex flex-row">
@@ -64,7 +71,6 @@ include './include/head.php';
                 while ($row_user = $result->fetch_assoc()) {
                 ?>
                 <tr>
-
                   <td><?php echo $i++; ?></td>
                   <td><a href="#"><img width="60" src="https://bootdey.com/img/Content/avatar/avatar7.png"
                         class="avatar" alt="Avatar" />
@@ -77,12 +83,12 @@ include './include/head.php';
                   <td>
                     <a class="btn btn-primary" href="./user/update_user.php?id=<?php echo $row_user['user_id'] ?>"
                       role="button">Edit</a>
-                    <a class="btn btn-danger" href="./user/delete_user.php?id=<?php echo $row_user['user_id'] ?>"
+                    <a class="btn btn-danger"
+                      href="./user/process_user.php?id_delete=<?php echo $row_user['user_id'] ?>"
                       onclick="return confirm('Bạn có muốn xóa <?php echo $row_user['username'] ?>?')"
                       role="button">Delete</a>
                   </td>
                 </tr>
-
                 <?php
                 }
                 ?>

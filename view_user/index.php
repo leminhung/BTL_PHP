@@ -10,12 +10,6 @@
   <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.css">
   <link rel="stylesheet" href="https://getbootstrap.com/docs/5.1/dashboard.rtl.css">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
-  <!-- include summernote css/js -->
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
   <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
@@ -44,24 +38,26 @@
     .form-group {
       margin-bottom: 12px;
     }
+
+    body {
+      margin-top: 40px;
+      background-color: black;
+    }
+
+    .container {
+      margin-left: -5%;
+    }
   </style>
 
-  <!-- Custom styles for this template -->
-  <link href="/PhuongNamSport/Admin_view/dashboard.css " rel="stylesheet">
-  <link href="./styles_user_update.css" rel="stylesheet">
+  <link href="/PhuongNamSport/Admin_view/dashboard.css" rel="stylesheet">
+  <link href="/PhuongNamSport/Admin_view/styles_user_update.css" rel="stylesheet">
 </head>
 
 <body>
   <?php
-  include '../include/header.php';
-  require_once "../../database/config.php";
+  require_once "../database/config.php";
+  session_start();
   ?>
-  <div>
-    <?php
-    include '../include/nav.php';
-    ?>
-  </div>
-
   <?php
   if (isset($_GET['err_exist'])) {
     echo '<script type="text/javascript">alert("' . $_GET['err_exist'] . '");</script>';
@@ -71,14 +67,14 @@
     <div class="row">
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <?php
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM users WHERE user_id='$id'";
+        $email = $_SESSION['email'];
+        $sql = "SELECT * FROM users WHERE email='$email'";
         $result = $mysqli->query($sql);
         $user = $result->fetch_assoc();
         ?>
 
         <div class="container">
-          <form class="form-inline" method="POST" action="./process_user.php">
+          <form class="form-inline" method="POST" action="../Admin_view/user/process_user.php">
             <div class="main-body">
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
@@ -96,7 +92,7 @@
                       </div>
 
                       <!-- Hidden field -->
-                      <input type="hidden" name="user_id" value="<?php echo $user['user_id'] ?>">
+                      <input type="hidden" name="user_idv" value="<?php echo $user['user_id'] ?>">
 
                       <div class="form-group">
                         <label for="inputAddress2">Email</label>
@@ -122,7 +118,9 @@
                           </select>
                         </div>
                       </div>
+                      <a href="../trangchu.php" class="btn btn-secondary btn-md active" role="button" aria-pressed="true">Back</a>
                       <button type="submit" name="submit" class="btn btn-primary">Edit</button>
+                      <a href="../Admin_view/user/process_user.php?id_userd=<?php echo $user['user_id'] ?>" class="btn btn-danger btn-md active" onclick="return confirm('Bạn chắc chắn muốn xóa tài khoản<?php echo $user['username'] ?> này?')" role="button" aria-pressed=" true">Remove</a>
                     </div>
                   </div>
                 </div>
@@ -136,7 +134,6 @@
 
 
   <script src="https://getbootstrap.com/docs/5.1/dist/js/bootstrap.bundle.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
