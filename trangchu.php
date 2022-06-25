@@ -6,6 +6,7 @@ session_start();
 <html lang="en">
 
 <head>
+  <title>Trang chủ</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +15,37 @@ session_start();
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="icon" href="./image/Free_Sample_By_Wix__1_-removebg-preview.png" type="image/icon type">
-  <title>Trang chủ</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"),
+      s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/62b72f6bb0d10b6f3e794ac6/1g6dp2fhk';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
   <?php
-    $search = "";
-    if (isset($_GET['search'])) {
-        $search = strtoupper($_GET['search']);
-        header("location:./index.php?search=$search");
-    }
-    ?>
+  $search = "";
+  if (isset($_GET['search'])) {
+    $search = strtoupper($_GET['search']);
+    header("location:./index.php?search=$search");
+  }
+  ?>
   <div class="container-fluid">
     <?php
-        include './includes/navbar.php';
-        ?>
+    include './includes/navbar.php';
+    ?>
     <!--slide-->
     <div style="margin-top: 154px;" class="row slide">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -70,11 +85,11 @@ session_start();
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
         <div class="MultiCarousel-inner">
           <?php
-                    $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
-                    ?>
+          $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+          ?>
           <?php
-                    while ($row_product = mysqli_fetch_array($sql_product)) {
-                    ?>
+          while ($row_product = mysqli_fetch_array($sql_product)) {
+          ?>
           <div class="item">
             <div style="padding: 0 0;" class="pad15 ">
               <div style="margin-bottom: 10px !important; background-color:#333333!important;" class="card ">
@@ -95,7 +110,7 @@ session_start();
           </div>
 
           <?php
-                    } ?>
+          } ?>
         </div>
         <button style="background-color: white; color: black" class="btn btn-primary leftLst"><i
             class="fa-solid fa-chevron-left"></i></button>

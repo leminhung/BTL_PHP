@@ -6,18 +6,18 @@ include './include/head.php';
 
 <body>
   <?php
-    require_once "../database/config.php";
-    ?>
+  require_once "../database/config.php";
+  ?>
   <!-- HEADER -->
   <?php
-    include './include/header.php';
-    ?>
+  include './include/header.php';
+  ?>
 
   <div class="container-fluid">
     <div class="row">
       <?php
-            include './include/nav.php';
-            ?>
+      include './include/nav.php';
+      ?>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
         <div class="container-fluid">
@@ -56,13 +56,13 @@ include './include/head.php';
               </thead>
               <tbody>
                 <?php
-                                $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
-                                ?>
+                $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+                ?>
 
                 <?php
-                                $i = 1;
-                                while ($row_product = mysqli_fetch_array($sql_product)) {
-                                ?>
+                $i = 1;
+                while ($row_product = mysqli_fetch_array($sql_product)) {
+                ?>
                 <tr>
 
                   <td><?php echo $i++; ?></td>
@@ -91,13 +91,16 @@ include './include/head.php';
                 </tr>
 
                 <?php
-                                }
-                                ?>
+                }
+                ?>
                 <!-- <c:forEach items="" var="product" varStatus="loop">
 
                                 </c:forEach> -->
               </tbody>
             </table>
+            <div class="text-center">
+              <a href="data_export.php?product_imp=true" class="btn btn-primary" target="_blank">Export data</a>
+            </div>
             <!-- Paging -->
             <div class="row">
               <div class="col-12 d-flex justify-content-center">
