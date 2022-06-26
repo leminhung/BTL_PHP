@@ -56,12 +56,12 @@ include './include/head.php';
               </thead>
               <tbody>
                 <?php
-                $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
-                ?>
+                  $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+                  ?>
 
                 <?php
-                $i = 1;
-                while ($row_product = mysqli_fetch_array($sql_product)) {
+                  $i = 1;
+                  while ($row_product = mysqli_fetch_array($sql_product)) {
                 ?>
                 <tr>
 
