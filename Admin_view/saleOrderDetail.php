@@ -6,10 +6,19 @@
 ?>
 
 <body>
-    <?php require_once "../connect.php" ?>
+    <?php require_once "../database/config.php" ?>
     <!-- HEADER -->
     <?php
         include './include/header.php';
+    ?>
+
+     <!-- xu ly hien thi order detail -->
+     <?php
+
+        $id = $_GET['id'];
+        $sql_order_product = mysqli_query($mysqli, "SELECT * FROM `order_detail` WHERE order_id=$id");
+       
+
     ?>
 
     <div class="container-fluid">
@@ -30,12 +39,13 @@
                                     class="btn btn-primary">Seach</button>
                             </div>
                         </div>
+
+                       
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Product ID</th>
-
                                     <th scope="col">Avatar</th>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Quantity</th>
@@ -44,29 +54,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="" var="saleOP" varStatus="loop">
-                                    <c:if test="">
+                            <?php
+                                $i = 1;
+                                while ($row_order_product = mysqli_fetch_array($sql_order_product)) {
+                            ?>
+                                <?php
+                                    $prd_id = $row_order_product['product_id'];
+                                    $sql_product = mysqli_query($mysqli, "SELECT * FROM `products` WHERE product_id = $prd_id");
+                                    $row_sql_product = mysqli_fetch_array($sql_product);
+                                ?>
                                         <tr>
-                                            <th scope="row"></th>
-                                            <td></td>
-                                            <td><img src="" alt="" width="100" height="100"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <th><?php echo $i++ ?></th>
+                                            <td><?php echo $row_order_product['product_id'] ?></td>
+                                            <td><img src="./upload/<?php echo $row_sql_product['product_image'] ?>" alt="" width="100" height="100"></td>
+                                            <td><?php echo $row_sql_product['product_name'] ?></td>
+                                            <td><?php echo $row_order_product['quantity'] ?></td>
+                                            <td><?php echo number_format($row_sql_product['product_price']) ?>đ</td>
+                                            <td><?php echo number_format($row_sql_product['product_price'] * $row_order_product['quantity']) ?></td>             
                                             <td>
-                                                <fmt:setLocale value="vi_VN" scope="session" />
-                                                <fmt:formatNumber value="" type="currency" />
-                                            </td>
-                                            <td>
-                                                <fmt:setLocale value="vi_VN" scope="session" />
-                                                <fmt:formatNumber value="" type="currency" />
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-primary" href="" role="button">Detail</a>
-                                                <a class="btn btn-danger" href="" role="button">Delete</a>
+                                                <!-- <a class="btn btn-primary" href="" role="button">Detail</a> -->
+                                                <!-- <a class="btn btn-danger" href="" role="button">Delete</a> -->
                                             </td>
                                         </tr>
-                                    </c:if>
-                                </c:forEach>
+                                    
+                            <?php
+                                }
+                            ?>
                             </tbody>
                         </table>
                         <!-- Paging -->
