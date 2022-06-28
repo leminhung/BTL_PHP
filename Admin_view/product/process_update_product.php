@@ -7,6 +7,7 @@ $prd_description = $_POST['prd_description'];
 $prd_price = $_POST['prd_price'];
 $prd_quantity = $_POST['prd_quantity'];
 $prd_sale = $_POST['prd_sale'];
+$prd_size = $_POST['prd_size'];
 // $prd_avatar = $_FILES['prd_avatar']['name'];
 // $path = '../upload';
 // move_uploaded_file($prd_avatar_tmp, $path . $prd_avatar);
@@ -21,7 +22,7 @@ $sql = "UPDATE products
     product_quantity='$prd_quantity',
     product_sale='$prd_sale',
     -- product_image='$prd_avatar',
-    size_id = '$prd_sizeID'
+    size_name = '$prd_size'
 
     WHERE
     product_id = $id ";

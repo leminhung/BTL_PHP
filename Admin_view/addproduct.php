@@ -37,7 +37,7 @@ include './include/head.php';
                     $prd_avatar_tmp = $_FILES['prd_avatar']['tmp_name'];
                     $path = './upload/';
                     $prd_sizeID = $_POST['prd_size'];
-                    $sql_insert_product = mysqli_query($mysqli, "INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_id,product_image,product_sale) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar','$prd_sale')");
+                    $sql_insert_product = mysqli_query($mysqli, "INSERT INTO products(category_id,product_name,product_description,product_price,product_quantity,size_name,product_image,product_sale) VALUES ('$prd_categoryID','$prd_name','$prd_description','$prd_price','$prd_quantity','$prd_sizeID','$prd_avatar','$prd_sale')");
                     move_uploaded_file($prd_avatar_tmp, $path . $prd_avatar);
 
                     echo '<script type="text/javascript">alert("Thêm sản phẩm thành công!!!");</script>';
@@ -127,22 +127,10 @@ include './include/head.php';
                             </div>
                         </div>
                         <!-- Size sản phẩm -->
-                        <div style="width: 100%" class="form-group ">
-                            <label class="col-md-4 control-label" for="category">Size</label>
-                            <?php
-                            $sql_size = mysqli_query($mysqli, "SELECT * FROM `sizes`");
-                            ?>
-
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Price">PRICE</label>
                             <div style="width: 93.333333% !important;" class="col-md-4">
-                                <select name="prd_size" class="form-control">
-                                    <?php
-                                    while ($row_size = mysqli_fetch_array($sql_size)) {
-                                    ?>
-                                        <option value="<?php echo $row_size['size_id'] ?>"><?php echo $row_size['size_name'] ?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                </select>
+                                <input id="Price" name="prd_size" placeholder="Size" class="form-control input-md" type="text" />
                             </div>
                         </div>
                         <!-- Button -->
