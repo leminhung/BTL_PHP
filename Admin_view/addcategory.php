@@ -2,18 +2,18 @@
 <html lang="en">
 
 <?php
-    include './include/head.php';
+include './include/head.php';
 ?>
 
 <body>
     <?php require_once "../database/config.php" ?>
     <?php
-        include './include/header.php';
+    include './include/header.php';
     ?>
     <div class="container-fluid">
         <div class="row">
             <?php
-                include './include/nav.php';
+            include './include/nav.php';
             ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <form modelAttribute="category" method="post" action="./category/process_addcategory.php" class="form-horizontal">

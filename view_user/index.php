@@ -57,6 +57,44 @@
   <?php
   require_once "../database/config.php";
   session_start();
+
+  if (isset($_POST['submit'])) {
+    $user_id = $_POST['user_idv'];
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $role = $_POST['role'];
+    $name = $_POST['name'];
+    $avatar = $_FILES['user_avatar']['name'];
+    $avatar_tmp = $_FILES['user_avatar']['tmp_name'];
+    $path = '../Admin_view/upload/user/';
+
+    $sql_check = "SELECT count(*) FROM users where email='$email' and user_id <> '$user_id'";
+    $result = $mysqli->query($sql_check);
+    $number_rows = mysqli_fetch_array($result)['count(*)'];
+
+    if ($number_rows == 1) {
+      header("location: /PhuongNamSport/view_user/index.php?id=$user_id&err_exist=Tài khoản đã tồn tại rùi");
+      exit;
+    }
+
+    $sql = "UPDATE users
+          SET 
+          name='$name',
+          phone='$phone',
+          username='$fullname',
+          email='$email',
+          role='$role',
+          avatar='$avatar'
+          WHERE user_id='$user_id'";
+
+    $mysqli->query($sql);
+    move_uploaded_file($avatar_tmp, $path . $avatar);
+
+    $_SESSION['email'] = $email;
+    header('location: /PhuongNamSport/trangchu.php?success=true');
+  }
+
   ?>
   <?php
   if (isset($_GET['err_exist'])) {
@@ -74,15 +112,15 @@
         ?>
 
         <div class="container">
-          <form class="form-inline" method="POST" action="../Admin_view/user/process_user.php">
+          <form class="form-inline" method="POST" action="" enctype="multipart/form-data">
             <div class="main-body">
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                          width="150">
+                        <img src="/PhuongNamSport/Admin_view/upload/user/<?php echo $user['avatar'] ?>" alt="Admin"
+                          class="rounded-circle" width="150" height="150">
                         <div class="mt-3">
                           <h4><?php echo $user['username'] ?></h4>
                         </div>
@@ -110,6 +148,14 @@
                         <label for="inputAddress2">Name</label>
                         <input type="text" class="form-control" id="inputAddress2" placeholder="Enter your name"
                           value="<?php echo $user['name'] ?>" name="name">
+                      </div>
+                      <!-- phần thêm avatar   -->
+                      <!-- File Button -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="avatar">Avatar</label>
+                        <div style="width: 93.333333% !important;" class="col-md-4">
+                          <input id="avatarfile" name="user_avatar" class="input-file" type="file" />
+                        </div>
                       </div>
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="category">Role</label>

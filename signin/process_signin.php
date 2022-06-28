@@ -31,7 +31,8 @@ function checkAuth($username, $pass, $mysqli)
         $_SESSION['email'] = $each['email'];
         $_SESSION['user_id'] = $each['user_id'];
         header('location: /PhuongNamSport/trangchu.php');
-      }
+      } else
+        header('location: /PhuongNamSport/signin?err_match=Mật khẩu không chính xác!');
     } else {
       header('location: /PhuongNamSport/signin?err_match=Tài khoản hoặc mật khẩu không chính xác!');
     }
