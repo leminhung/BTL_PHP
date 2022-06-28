@@ -32,4 +32,5 @@ $_SESSION['username'] = $username;
 $_SESSION['name'] = $name;
 $_SESSION['phone'] = $phone;
 $_SESSION['email'] = $email;
+// $_SESSION['user_id'] = $user_id;
 header('Location: /PhuongNamSport/trangchu.php');
