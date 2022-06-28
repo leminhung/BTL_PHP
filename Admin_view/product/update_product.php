@@ -189,23 +189,11 @@
               </div>
             </div>
             <!-- Size sản phẩm -->
-            <div style="width: 100%" class="form-group ">
-              <label class="col-md-4 control-label" for="category">Size</label>
-              <?php
-              $sql_size = mysqli_query($mysqli, "SELECT * FROM `sizes`");
-              ?>
-
-              <div style="width: 93.333333% !important;" class="col-md-4">
-                <select name="prd_size" class="form-control">
-                  <?php
-                  while ($row_size = mysqli_fetch_array($sql_size)) {
-                  ?>
-                    <option value="<?php echo $row_size['size_id'] ?>"><?php echo $row_size['size_name'] ?></option>
-                  <?php
-                  }
-                  ?>
-                </select>
-              </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="Price">Size</label>
+                <div style="width: 93.333333% !important;" class="col-md-4">
+                    <input id="Price" name="prd_size" placeholder="Size" class="form-control input-md" type="text" />
+                </div>
             </div>
             <!-- Button -->
             <br>
