@@ -85,7 +85,7 @@ session_start();
       <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
         <div class="MultiCarousel-inner">
           <?php
-          $sql_product = mysqli_query($mysqli, "SELECT * FROM `products`");
+          $sql_product = mysqli_query($mysqli, "SELECT * FROM `products` group by product_name");
           ?>
           <?php
           while ($row_product = mysqli_fetch_array($sql_product)) {

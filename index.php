@@ -72,11 +72,13 @@ require_once './database/config.php';
                 $sql = "SELECT * FROM products
                     WHERE
                     (category_id = $category_id)
+                    group by product_name
                     LIMIT $so_san_pham_tren_1_trang offset $boqua";
             } else {
                 $sql = "SELECT * FROM products
                     WHERE
                     UPPER(product_name) LIKE '%$search%'
+                    group by product_name
                     LIMIT $so_san_pham_tren_1_trang offset $boqua";
             }
             $products = $mysqli->query($sql);
