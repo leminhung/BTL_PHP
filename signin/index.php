@@ -9,20 +9,26 @@
   <meta name="generator" content="Hugo 0.88.1">
   <link rel="stylesheet" href="./signin.css">
   <title>Login</title>
-
+  <!-- Materialize CSS -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
   <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
   <link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="signin.css" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <?php
 if (isset($_GET['err_match'])) {
-    echo '<script type="text/javascript">alert("' . $_GET['err_match'] . '");</script>';
+  echo '<script type="text/javascript">alert("' . $_GET['err_match'] . '");</script>';
+}
+
+if (isset($_GET['err_checkcap'])) {
+  echo '<script type="text/javascript">alert("' . $_GET['err_checkcap'] . '");</script>';
 }
 
 session_start();
 if (isset($_SESSION['username'])) {
-    header('location: /PhuongNamSport/trangchu.php');
+  header('location: /PhuongNamSport/trangchu.php');
 }
 ?>
 
@@ -41,7 +47,9 @@ if (isset($_SESSION['username'])) {
           name="password" required>
         <label for="floatingPassword">Password</label>
       </div>
-
+      <div class="row">
+        <div class="g-recaptcha" data-sitekey="6LcA8a0gAAAAAP5YAPhSR9gywJ_Sa38p8e5mP5ut"></div>
+      </div>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Remember me
@@ -53,6 +61,8 @@ if (isset($_SESSION['username'])) {
     <p class="text-center" style="margin-top:8px"><a href="../forgotpass.php">Quên mật khẩu</a> </p>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </main>
+  <!-- Materialize JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,18 @@ if (isset($_POST['signin'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    checkAuth($email, $password, $mysqli);
+    $secret = "6LcA8a0gAAAAAMCGiFkaOQ70nBtZqsihdMA8jmka";
+    $response = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$response&remoteip=$remoteip";
+    $data = file_get_contents($url);
+    $row = json_decode($data, true);
+
+    if ($row['success'] != "true") {
+      header('location: /PhuongNamSport/signin?err_checkcap=Bạn chưa check capcha!');
+    } else {
+      checkAuth($email, $password, $mysqli);
+    }
   }
 }
 

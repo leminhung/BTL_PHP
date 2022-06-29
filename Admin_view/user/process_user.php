@@ -48,6 +48,8 @@ if (isset($_GET['id_delete']) || isset($_GET['id_userd'])) {
   unset($_SESSION['phone']);
   unset($_SESSION['email']);
   unset($_SESSION['id']);
+  unset($_SESSION['user_id']);
+  unset($_SESSION['avatar']);
   if (isset($_GET['id_userd'])) {
     header('location: /PhuongNamSport/trangchu.php?success_del=true');
   } else {
