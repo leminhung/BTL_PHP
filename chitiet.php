@@ -29,6 +29,10 @@ include('./utils/function.php');
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./chitiet.css">
   <style>
+  .cus_tag {
+    text-align: left !important;
+  }
+
   form button {
     margin: 5px 0px;
   }
@@ -117,6 +121,21 @@ $product = mysqli_fetch_array($product_sql);
 ?>
 
 <body>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"),
+      s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/62b72f6bb0d10b6f3e794ac6/1g6dp2fhk';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
   <div>
     <div class="container-fluid">
       <div class="row header">
@@ -279,7 +298,7 @@ $product = mysqli_fetch_array($product_sql);
                 </form>
                 <?php else : ?>
                 <div class="well" style="margin-top: 20px;">
-                  <h4 class="text-center"><a href="#">Sign in</a> to post a comment</h4>
+                  <h4 class="text-center cus_tag"><a href="/PhuongNamSport/signin">Sign in</a> to post a comment</h4>
                 </div>
                 <?php endif ?>
 
@@ -294,7 +313,7 @@ $product = mysqli_fetch_array($product_sql);
                   <?php foreach ($comments as $comment) : ?>
                   <!-- comment -->
                   <div class="comment clearfix">
-                    <img src="./Admin_view/upload/ADICOLORCLASSICS3-STRIPESTEE.jpg" alt="" class="profile_pic">
+                    <img src='./Admin_view/upload/user/<?php echo $comment['avatar'] ?>' alt="" class=" profile_pic">
                     <div class="comment-details">
                       <span class="comment-name"><?php echo getUsernameById($comment['user_id']) ?></span>
                       <span
@@ -316,7 +335,7 @@ $product = mysqli_fetch_array($product_sql);
                       <?php foreach ($replies as $reply) : ?>
                       <!-- reply -->
                       <div class="comment reply clearfix">
-                        <img src="./Admin_view/upload/ADICOLORCLASSICS3-STRIPESTEE.jpg" alt="" class="profile_pic">
+                        <img src='./Admin_view/upload/user/<?php echo $reply['avatar'] ?>' alt="" class="profile_pic">
                         <div class="comment-details">
                           <span class="comment-name"><?php echo getUsernameById($reply['user_id']) ?></span>
                           <span

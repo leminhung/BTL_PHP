@@ -54,11 +54,11 @@ $(document).ready(function () {
       var url = $(this).parent().attr("action");
 
       $.ajax({
-        url: url,
+        url,
         type: "POST",
         data: {
-          comment_id: comment_id,
-          reply_text: reply_text,
+          comment_id,
+          reply_text,
           reply_posted: 1,
         },
         success: function (data) {

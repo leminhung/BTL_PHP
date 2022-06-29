@@ -63,7 +63,6 @@
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $role = $_POST['role'];
     $name = $_POST['name'];
     $avatar = $_FILES['user_avatar']['name'];
     $avatar_tmp = $_FILES['user_avatar']['tmp_name'];
@@ -84,7 +83,6 @@
           phone='$phone',
           username='$fullname',
           email='$email',
-          role='$role',
           avatar='$avatar'
           WHERE user_id='$user_id'";
 
@@ -157,18 +155,7 @@
                           <input id="avatarfile" name="user_avatar" class="input-file" type="file" />
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label" for="category">Role</label>
-                        <?php
-                        $option2 = $user['role'] == 1 ? 0 : 1;
-                        ?>
-                        <div class="col-md-12">
-                          <select name="role" class="form-control">
-                            <option value="<?php echo $user['role'] ?>"><?php echo $user['role'] ?></option>
-                            <option value="<?php echo $option2 ?>"><?php echo $option2 ?></option>
-                          </select>
-                        </div>
-                      </div>
+
                       <a href="../trangchu.php" class="btn btn-secondary btn-md active" role="button"
                         aria-pressed="true">Back</a>
                       <button type="submit" name="submit" class="btn btn-primary">Edit</button>

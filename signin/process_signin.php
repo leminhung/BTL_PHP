@@ -2,20 +2,20 @@
 require_once "../database/config.php";
 
 if (isset($_POST['signin'])) {
-  if (empty(trim($_POST['username'])) || empty(trim($_POST['password']))) {
-    $err = "Please enter username or password";
+  if (empty(trim($_POST['email'])) || empty(trim($_POST['password']))) {
+    $err = "Please enter email or password";
   } else {
-    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
-    checkAuth($username, $password, $mysqli);
+    checkAuth($email, $password, $mysqli);
   }
 }
 
-function checkAuth($username, $pass, $mysqli)
+function checkAuth($email, $pass, $mysqli)
 {
   if (empty($err)) {
-    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = $mysqli->query($sql) or die($mysqli->error);
 
     $number_rows = mysqli_num_rows($result);
@@ -30,6 +30,7 @@ function checkAuth($username, $pass, $mysqli)
         $_SESSION['phone'] = $each['phone'];
         $_SESSION['email'] = $each['email'];
         $_SESSION['user_id'] = $each['user_id'];
+        $_SESSION['avatar'] = $each['avatar'];
         header('location: /PhuongNamSport/trangchu.php');
       } else
         header('location: /PhuongNamSport/signin?err_match=Mật khẩu không chính xác!');

@@ -1,5 +1,8 @@
 <?php
-$user_id = $_SESSION['user_id'];
+$user_id = -1;
+if (isset($_SESSION['user_id']))
+  $user_id = $_SESSION['user_id'];
+
 $product_id = $_SESSION['product_id'];
 
 // echo '<script type="text/javascript">alert("' . $product_id . '");</script>';
@@ -8,7 +11,7 @@ $product_id = $_SESSION['product_id'];
 $product_query_result = $mysqli->query("SELECT * FROM products WHERE product_id=' . $product_id . '");
 
 // Get all comments from database
-$comments_query_result = $mysqli->query("SELECT * FROM comments WHERE product_id=" . $product_id . " ORDER BY created_at DESC");
+$comments_query_result = $mysqli->query("SELECT users.avatar, users.user_id, comments.created_at, comments.body, comments.comment_id FROM comments join users on comments.user_id = users.user_id WHERE product_id=" . $product_id . " ORDER BY created_at DESC");
 $comments = mysqli_fetch_all($comments_query_result, MYSQLI_ASSOC);
 
 // If the user clicked submit on comment form...
@@ -26,14 +29,14 @@ if (isset($_POST['comment_posted'])) {
 
   // Query same comment from database to send back to be displayed
   $inserted_id = $mysqli->insert_id;
-  $res = $mysqli->query("SELECT * FROM comments WHERE comment_id=$inserted_id");
+  $res = $mysqli->query("SELECT * FROM comments join users on comments.user_id = users.user_id WHERE comment_id=$inserted_id");
   $inserted_comment = mysqli_fetch_assoc($res);
 
 
   // if insert was successful, get that same comment from the database and return it
   if ($result) {
     $comment = "<div class='comment clearfix'>
-						<img src='./Admin_view/upload/ADICOLORCLASSICS3-STRIPESTEE.jpg' alt='' class='profile_pic'>
+						<img src='./Admin_view/upload/user/" . $inserted_comment['avatar'] . "' alt='' class='profile_pic'>
 						<div class='comment-details'>
 							<span class='comment-name'>" . getUsernameById($inserted_comment['user_id']) . "</span>
 							<span class='comment-date'>" . date('F j, Y ', strtotime($inserted_comment['created_at'])) . "</span>
@@ -75,13 +78,14 @@ if (isset($_POST['reply_posted'])) {
   $result = $mysqli->query($sql);
 
   $inserted_id = $mysqli->insert_id;
+
   $res = $mysqli->query("SELECT * FROM replies WHERE reply_id=$inserted_id");
   $inserted_reply = mysqli_fetch_assoc($res);
 
   // if insert was successful, get that same reply from the database and return it
   if ($result) {
     $reply = "<div class='comment reply clearfix'>
-						<img src='./Admin_view/upload/ADICOLORCLASSICS3-STRIPESTEE.jpg' alt='' class='profile_pic'>
+						<img src='./Admin_view/upload/user/" . $_SESSION['avatar'] . "' alt='' class='profile_pic'>
 						<div class='comment-details'>
 							<span class='comment-name'>" . getUsernameById($inserted_reply['user_id']) . "</span>
 							<span class='comment-date'>" . date('F j, Y ', strtotime($inserted_reply['created_at'])) . "</span>
@@ -116,9 +120,11 @@ function getUsernameById($id)
 // Receives a comment id and returns the username
 function getRepliesByCommentId($id)
 {
+  // echo '<script type="text/javascript">alert("' . $id . '");</script>';
+
   global $mysqli;
 
-  $result = $mysqli->query("SELECT * FROM replies WHERE comment_id=$id");
+  $result = $mysqli->query("SELECT replies.created_at, replies.body, users.avatar, users.user_id, users.username FROM replies join users on users.user_id = replies.user_id WHERE replies.comment_id=$id");
   $replies = mysqli_fetch_all($result, MYSQLI_ASSOC);
   return $replies;
 }

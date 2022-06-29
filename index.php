@@ -18,11 +18,26 @@ require_once './database/config.php';
 </head>
 
 <body>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API = Tawk_API || {},
+    Tawk_LoadStart = new Date();
+  (function() {
+    var s1 = document.createElement("script"),
+      s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/62b72f6bb0d10b6f3e794ac6/1g6dp2fhk';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
   <div class="container-fluid">
     <?php
-        session_start();
-        include './includes/navbar.php';
-        ?>
+    session_start();
+    include './includes/navbar.php';
+    ?>
   </div>
   <div style=" max-width: 1350px; margin-top: 154px;" class="container">
     <div class="row col-12" style="padding-left: 0px;">
@@ -31,9 +46,9 @@ require_once './database/config.php';
           <a style="background-color: #333333 !important; color: orange !important" href="#"
             class="list-group-item list-group-item-action list-category-item">Danh mục sản phẩm</a>
           <?php
-                    $sql = "SELECT * FROM `categories`";
-                    $categories = $mysqli->query($sql);
-                    ?>
+          $sql = "SELECT * FROM `categories`";
+          $categories = $mysqli->query($sql);
+          ?>
           <?php foreach ($categories as $category) { ?>
           <a href="?categoryId=<?php echo $category['category_id'] ?>"
             class="list-group-item list-group-item-action name-category-item"><?php echo $category['category_name'] ?></a>
@@ -41,48 +56,48 @@ require_once './database/config.php';
         </div>
       </div>
       <?php
-            $trang = 1;
-            if (isset($_GET['trang'])) {
-                $trang = $_GET['trang'];
-            }
-            $search = '';
-            if (isset($_GET['search'])) {
-                $search = strtoupper($_GET['search']);
-            }
-            //phan trang
-            $sql_so_san_pham = "";
-            if (!empty($_GET['categoryId'])) {
-                $category_id = $_GET['categoryId'];
-                $sql_so_san_pham = "SELECT COUNT(*) FROM products
+      $trang = 1;
+      if (isset($_GET['trang'])) {
+        $trang = $_GET['trang'];
+      }
+      $search = '';
+      if (isset($_GET['search'])) {
+        $search = strtoupper($_GET['search']);
+      }
+      //phan trang
+      $sql_so_san_pham = "";
+      if (!empty($_GET['categoryId'])) {
+        $category_id = $_GET['categoryId'];
+        $sql_so_san_pham = "SELECT COUNT(*) FROM products
                     WHERE (category_id = $category_id)";
-            } else {
-                $sql_so_san_pham = "SELECT COUNT(*) FROM products
+      } else {
+        $sql_so_san_pham = "SELECT COUNT(*) FROM products
                 WHERE UPPER(product_name) LIKE '%$search%'";
-            }
-            $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
-            $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
-            $so_san_pham = $kq_so_san_pham['COUNT(*)'];
-            $so_san_pham_tren_1_trang = 8;
-            $so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
-            $boqua = $so_san_pham_tren_1_trang * ($trang - 1);
+      }
+      $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
+      $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
+      $so_san_pham = $kq_so_san_pham['COUNT(*)'];
+      $so_san_pham_tren_1_trang = 8;
+      $so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
+      $boqua = $so_san_pham_tren_1_trang * ($trang - 1);
 
-            $sql = "";
-            if (!empty($_GET['categoryId'])) {
-                $category_id = $_GET['categoryId'];
-                $sql = "SELECT * FROM products
+      $sql = "";
+      if (!empty($_GET['categoryId'])) {
+        $category_id = $_GET['categoryId'];
+        $sql = "SELECT * FROM products
                     WHERE
                     (category_id = $category_id)
                     group by product_name
                     LIMIT $so_san_pham_tren_1_trang offset $boqua";
-            } else {
-                $sql = "SELECT * FROM products
+      } else {
+        $sql = "SELECT * FROM products
                     WHERE
                     UPPER(product_name) LIKE '%$search%'
                     group by product_name
                     LIMIT $so_san_pham_tren_1_trang offset $boqua";
-            }
-            $products = $mysqli->query($sql);
-            ?>
+      }
+      $products = $mysqli->query($sql);
+      ?>
       <div class="col-9 content">
         <div class="row">
           <img src="../Bootstrap/product img/banner-collection.jpg" alt="">
@@ -106,9 +121,9 @@ require_once './database/config.php';
         <!-- danh sach sp -->
         <div class="row list-product">
           <?php
-                    if (is_array($products) || is_object($products)) {
-                        foreach ($products as $product) {
-                    ?>
+          if (is_array($products) || is_object($products)) {
+            foreach ($products as $product) {
+          ?>
           <div class="col-lg-3 col-md-4 col-sm-6  ">
             <div style="margin-bottom: 10px !important;" class="card card-custom">
               <?php if ($product['product_sale'] > 0) { ?>
@@ -141,7 +156,7 @@ require_once './database/config.php';
             </div>
           </div>
           <?php }
-                    } ?>
+          } ?>
         </div>
         <hr>
         <nav style="margin: auto; color: orange !important;" class="col-4" aria-label="Page navigation example">
