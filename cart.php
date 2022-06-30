@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: /PhuongNamSport/signin");
+  header("Location: /PhuongNamSport/signin");
 }
 ?>
 
@@ -32,18 +32,17 @@ if (!isset($_SESSION['username'])) {
   <div style="width: 0%; margin-left: -15px;" class="container-fluid">
     <!-- Header -->
     <?php
-        session_start();
-        $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
-        $total = 0;
-        $_SESSION['items'] = 0;
-        if (is_array($cart) || is_object($cart)) {
-            foreach ($cart as $id => $each) :
-                $total += $each['price'] * $each['quantity'];
-                $_SESSION['items']++;
-            endforeach;
-        };
-        include './includes/navbar.php';
-        ?>
+    $cart = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+    $total = 0;
+    $_SESSION['items'] = 0;
+    if (is_array($cart) || is_object($cart)) {
+      foreach ($cart as $id => $each) :
+        $total += $each['price'] * $each['quantity'];
+        $_SESSION['items']++;
+      endforeach;
+    };
+    include './includes/navbar.php';
+    ?>
   </div>
   <div style="max-width: 1920px; margin-top: 200px;" class="container">
     <form action="process_checkout.php" method="post">
@@ -60,16 +59,16 @@ if (!isset($_SESSION['username'])) {
               </div>
             </div>
             <?php
-                        $fullname = "";
+            $fullname = "";
 
-                        if (isset($_SESSION['name']))
-                            $fullname = $_SESSION['name'];
-                        ?>
+            if (isset($_SESSION['name']))
+              $fullname = $_SESSION['name'];
+            ?>
             <div class="row border-top border-bottom cart-list">
               <?php
-                            if (is_array($cart) || is_object($cart)) {
-                                foreach ($cart as $id => $each) :
-                            ?>
+              if (is_array($cart) || is_object($cart)) {
+                foreach ($cart as $id => $each) :
+              ?>
               <div class="row main align-items-center">
                 <div class="col-2">
                   <img class="img-fluid" src="./Admin_view/upload/<?php echo $each['image'] ?> ?>">

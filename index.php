@@ -68,15 +68,15 @@ require_once './database/config.php';
       $sql_so_san_pham = "";
       if (!empty($_GET['categoryId'])) {
         $category_id = $_GET['categoryId'];
-        $sql_so_san_pham = "SELECT COUNT(*) FROM products
+        $sql_so_san_pham = "SELECT COUNT(DISTINCT product_name) FROM products
                     WHERE (category_id = $category_id)";
       } else {
-        $sql_so_san_pham = "SELECT COUNT(*) FROM products
+        $sql_so_san_pham = "SELECT COUNT(DISTINCT product_name) FROM products
                 WHERE UPPER(product_name) LIKE '%$search%'";
       }
       $mang_so_san_pham = $mysqli->query($sql_so_san_pham);
       $kq_so_san_pham = mysqli_fetch_array($mang_so_san_pham);
-      $so_san_pham = $kq_so_san_pham['COUNT(*)'];
+      $so_san_pham = $kq_so_san_pham['COUNT(DISTINCT product_name)'];
       $so_san_pham_tren_1_trang = 8;
       $so_trang = ceil($so_san_pham / $so_san_pham_tren_1_trang);
       $boqua = $so_san_pham_tren_1_trang * ($trang - 1);
