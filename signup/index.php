@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
   $avatar_tmp = $_FILES['user_avatar']['tmp_name'];
   $path = '../Admin_view/upload/user/';
 
-  $sql = "SELECT count(*) FROM users where email='$email'";
+  $sql = "SELECT count(*) FROM users where email='$email' OR username='$username'";
   $result = $mysqli->query($sql);
   $number_rows = mysqli_fetch_array($result)['count(*)'];
 
