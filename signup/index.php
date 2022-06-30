@@ -13,45 +13,45 @@ $path = '../Admin_view/upload/user/';
 
 
 if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $password = $_POST['password'];
-    $re_password = $_POST['re_password'];
-    $avatar = $_FILES['user_avatar']['name'];
-    $avatar_tmp = $_FILES['user_avatar']['tmp_name'];
-    $path = '../Admin_view/upload/user/';
+  $username = $_POST['username'];
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $password = $_POST['password'];
+  $re_password = $_POST['re_password'];
+  $avatar = $_FILES['user_avatar']['name'];
+  $avatar_tmp = $_FILES['user_avatar']['tmp_name'];
+  $path = '../Admin_view/upload/user/';
 
-    $sql = "SELECT count(*) FROM users where email='$email'";
-    $result = $mysqli->query($sql);
-    $number_rows = mysqli_fetch_array($result)['count(*)'];
+  $sql = "SELECT count(*) FROM users where email='$email'";
+  $result = $mysqli->query($sql);
+  $number_rows = mysqli_fetch_array($result)['count(*)'];
 
-    if ($number_rows == 1) {
-        header("location: /PhuongNamSport/signup/?err_exist=Tài khoản đã tồn tại rùi");
-        exit;
-    }
+  if ($number_rows == 1) {
+    header("location: /PhuongNamSport/signup/?err_exist=Tài khoản đã tồn tại rùi");
+    exit;
+  }
 
-    if ($password != $re_password) {
-        header("location: /PhuongNamSport/signup/?err_match=Mật khẩu nhập lại không đúng");
-        exit;
-    }
+  if ($password != $re_password) {
+    header("location: /PhuongNamSport/signup/?err_match=Mật khẩu nhập lại không đúng");
+    exit;
+  }
 
-    $hash_pass = password_hash($password, PASSWORD_BCRYPT);
+  $hash_pass = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO users(username, phone, email, password, name, avatar) values ('$username', '$phone', '$email', '$hash_pass', '$name', '$avatar')";
-    $mysqli->query($sql);
-    move_uploaded_file($avatar_tmp, $path . $avatar);
+  $sql = "INSERT INTO users(username, phone, email, password, name, avatar) values ('$username', '$phone', '$email', '$hash_pass', '$name', '$avatar')";
+  $mysqli->query($sql);
+  move_uploaded_file($avatar_tmp, $path . $avatar);
 
 
-    session_start();
-    $_SESSION['username'] = $username;
-    $_SESSION['name'] = $name;
-    $_SESSION['phone'] = $phone;
-    $_SESSION['email'] = $email;
-    $_SESSION['avatar'] = $avatar;
+  session_start();
+  $_SESSION['username'] = $username;
+  $_SESSION['name'] = $name;
+  $_SESSION['phone'] = $phone;
+  $_SESSION['email'] = $email;
+  $_SESSION['avatar'] = $avatar;
 
-    header('Location: /PhuongNamSport/signin');
+  header('Location: /PhuongNamSport/signin');
 }
 
 ?>
@@ -81,14 +81,14 @@ if (isset($_POST['submit'])) {
 
 <body>
   <?php
-    if (isset($_GET['err_exist'])) {
-        echo '<script type="text/javascript">alert("' . $_GET['err_exist'] . '");</script>';
-    }
+  if (isset($_GET['err_exist'])) {
+    echo '<script type="text/javascript">alert("' . $_GET['err_exist'] . '");</script>';
+  }
 
-    if (isset($_GET['err_match'])) {
-        echo '<script type="text/javascript">alert("' . $_GET['err_match'] . '");</script>';
-    }
-    ?>
+  if (isset($_GET['err_match'])) {
+    echo '<script type="text/javascript">alert("' . $_GET['err_match'] . '");</script>';
+  }
+  ?>
   <div class="container">
     <br>
     <div class="card bg-light">
